@@ -23,7 +23,7 @@ This project is a web application called **SteadyMind**, a mental health compani
   - `/styles`: Global styles and theme configurations
 - `/server`: Contains the source code for the Node.js backend (TBD)
 - `/docs`: Contains documentation for the project, including API specifications and user guides
-- `/.github`: GitHub-specific files including workflows and Copilot instructions for Angular best pracices
+- `/.github`: GitHub-specific files including workflows and Copilot instructions for Angular best practices
 - `/.claude`: Angular-specific best practices and guidelines for Gemini
 - `/.gemini`: Angular-specific best practices and guidelines for Gemini
 
