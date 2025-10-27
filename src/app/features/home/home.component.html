@@ -1,47 +1,73 @@
 <div class="home">
-  <section class="hero">
-    <div class="hero-content">
-      <h1 class="hero-title">Welcome to {{ appTitle() }}</h1>
-      <p class="hero-subtitle">
-        A gentle companion to help you find calm and grounding techniques when you need them most
-      </p>
-      <p class="disclaimer">
-        <strong>Important:</strong> {{ appTitle() }} is not a replacement for professional therapy
-        or medical treatment. If you're in crisis, please reach out to a
-        <a routerLink="/crisis-resources">crisis resource</a>.
-      </p>
-    </div>
+  <!-- Compact welcome message -->
+  <section class="welcome">
+    <p class="welcome-text">
+      Let's take this one step at a time. Answer a couple of gentle questions, and we'll help you
+      find what might work for you right now.
+    </p>
+    <p class="skip-option">
+      Or
+      <a routerLink="/coping-library" class="skip-link">browse coping techniques</a>
+      on your own
+    </p>
   </section>
 
-  <section class="quick-actions">
-    <h2 class="section-title">How can we help you today?</h2>
+  <!-- Guided questions -->
+  <section class="guided-questions">
+    @for (question of questions; track question.id) { @if (currentQuestion() === question.id) {
+    <div class="question-card">
+      <!-- Progress indicator -->
+      <div class="progress-bar">
+        <div
+          class="progress-fill"
+          [style.width.%]="((currentQuestion() + 1) / questions.length) * 100"
+        ></div>
+      </div>
 
-    <div class="actions-grid">
-      @for (action of quickActions; track action.route) {
-      <a
-        [routerLink]="action.route"
-        class="action-card"
-        [class.urgent]="action.urgent"
-        [attr.data-color]="action.color"
-      >
-        <div class="action-icon" aria-hidden="true">{{ action.icon }}</div>
-        <h3 class="action-title">{{ action.title }}</h3>
-        <p class="action-description">{{ action.description }}</p>
-        <span class="action-arrow" aria-hidden="true">→</span>
-      </a>
-      }
-    </div>
-  </section>
+      <p class="question-number">Question {{ currentQuestion() + 1 }} of {{ questions.length }}</p>
 
-  <section class="breathing-space">
-    <div class="breathing-card">
-      <h2 class="breathing-title">Take a moment to breathe</h2>
-      <p class="breathing-text">
-        Sometimes all we need is a pause. Take a few deep breaths before continuing.
-      </p>
-      <div class="breathing-visual" aria-hidden="true">
-        <div class="breathing-circle"></div>
+      <h2 class="question-text">{{ question.question }}</h2>
+
+      <div class="options-grid">
+        @for (option of question.options; track option.value) {
+        <button
+          class="option-button"
+          [class.selected]="selectedAnswer() === option.value"
+          (click)="selectAnswer(option.value)"
+          type="button"
+        >
+          <span class="option-emoji" aria-hidden="true">{{ option.emoji }}</span>
+          <span class="option-label">{{ option.label }}</span>
+        </button>
+        }
+      </div>
+
+      <!-- Navigation buttons -->
+      <div class="question-nav">
+        @if (currentQuestion() > 0) {
+        <button class="nav-button secondary" (click)="previousQuestion()" type="button">
+          ← Back
+        </button>
+        }
+        <button
+          class="nav-button primary"
+          [disabled]="!selectedAnswer()"
+          (click)="nextQuestion()"
+          type="button"
+        >
+          @if (currentQuestion() < questions.length - 1) { Continue } @else { Get Recommendations }
+          →
+        </button>
       </div>
     </div>
+    } }
+  </section>
+
+  <!-- Quick disclaimer with crisis link -->
+  <section class="footer-note">
+    <p class="disclaimer-compact">
+      In crisis?
+      <a routerLink="/crisis-resources" class="crisis-link">Get immediate help</a>
+    </p>
   </section>
 </div>

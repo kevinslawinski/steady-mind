@@ -6,13 +6,6 @@ export const routes: Routes = [
     loadComponent: () => import('./features/home/home.component').then((m) => m.HomeComponent),
   },
   {
-    path: 'guided-prompts',
-    loadComponent: () =>
-      import('./features/guided-prompts/guided-prompts.component').then(
-        (m) => m.GuidedPromptsComponent
-      ),
-  },
-  {
     path: 'coping-library',
     loadComponent: () =>
       import('./features/coping-library/coping-library.component').then(

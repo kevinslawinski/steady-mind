@@ -16,8 +16,7 @@ export class NavigationComponent {
   protected readonly appTitle = signal(APP_TITLE);
 
   protected readonly navItems = [
-    { path: '/', label: 'Home', icon: '🏠' },
-    { path: '/guided-prompts', label: 'Guided Support', icon: '💬' },
+    { path: '/', label: 'Guided Support', icon: '💬' },
     { path: '/coping-library', label: 'Coping Library', icon: '📚' },
     { path: '/crisis-resources', label: 'Crisis Resources', icon: '🆘' },
   ];
