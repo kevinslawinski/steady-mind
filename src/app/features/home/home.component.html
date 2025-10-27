@@ -1,0 +1,47 @@
+<div class="home">
+  <section class="hero">
+    <div class="hero-content">
+      <h1 class="hero-title">Welcome to {{ appTitle() }}</h1>
+      <p class="hero-subtitle">
+        A gentle companion to help you find calm and grounding techniques when you need them most
+      </p>
+      <p class="disclaimer">
+        <strong>Important:</strong> {{ appTitle() }} is not a replacement for professional therapy
+        or medical treatment. If you're in crisis, please reach out to a
+        <a routerLink="/crisis-resources">crisis resource</a>.
+      </p>
+    </div>
+  </section>
+
+  <section class="quick-actions">
+    <h2 class="section-title">How can we help you today?</h2>
+
+    <div class="actions-grid">
+      @for (action of quickActions; track action.route) {
+      <a
+        [routerLink]="action.route"
+        class="action-card"
+        [class.urgent]="action.urgent"
+        [attr.data-color]="action.color"
+      >
+        <div class="action-icon" aria-hidden="true">{{ action.icon }}</div>
+        <h3 class="action-title">{{ action.title }}</h3>
+        <p class="action-description">{{ action.description }}</p>
+        <span class="action-arrow" aria-hidden="true">→</span>
+      </a>
+      }
+    </div>
+  </section>
+
+  <section class="breathing-space">
+    <div class="breathing-card">
+      <h2 class="breathing-title">Take a moment to breathe</h2>
+      <p class="breathing-text">
+        Sometimes all we need is a pause. Take a few deep breaths before continuing.
+      </p>
+      <div class="breathing-visual" aria-hidden="true">
+        <div class="breathing-circle"></div>
+      </div>
+    </div>
+  </section>
+</div>

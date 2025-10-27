@@ -1,0 +1,44 @@
+<nav class="navigation" [class.is-open]="isOpen()" role="navigation" aria-label="Main navigation">
+  @if (isOpen()) {
+  <div class="nav-backdrop" (click)="closeNav.emit()" aria-hidden="true"></div>
+  }
+
+  <div class="nav-panel">
+    <div class="nav-header">
+      <h2 class="nav-title">Navigation</h2>
+      <button
+        class="close-button"
+        (click)="closeNav.emit()"
+        aria-label="Close navigation menu"
+        type="button"
+      >
+        ✕
+      </button>
+    </div>
+
+    <ul class="nav-list">
+      @for (item of navItems; track item.path) {
+      <li class="nav-item">
+        <a
+          [routerLink]="item.path"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: item.path === '/' }"
+          (click)="closeNav.emit()"
+          class="nav-link"
+        >
+          <span class="nav-icon" aria-hidden="true">{{ item.icon }}</span>
+          <span class="nav-label">{{ item.label }}</span>
+        </a>
+      </li>
+      }
+    </ul>
+
+    <div class="nav-footer">
+      <p class="disclaimer">
+        <small>
+          {{ appTitle() }} is not a replacement for professional therapy or medical treatment.
+        </small>
+      </p>
+    </div>
+  </div>
+</nav>

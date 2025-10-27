@@ -1,0 +1,118 @@
+.header {
+  background-color: var(--surface-color);
+  border-bottom: 1px solid var(--border-color);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: var(--shadow-sm);
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.header-start {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.header-end {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.app-title {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-primary);
+
+  a {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.2s ease;
+
+    &:hover,
+    &:focus {
+      color: var(--primary-color);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--primary-color);
+      outline-offset: 4px;
+      border-radius: 4px;
+    }
+  }
+}
+
+.menu-button,
+.theme-toggle {
+  background: none;
+  border: none;
+  padding: 0.5rem;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background-color 0.2s ease;
+  color: var(--text-primary);
+
+  &:hover {
+    background-color: var(--hover-color);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+  }
+}
+
+.menu-icon,
+.theme-icon {
+  display: block;
+  width: 24px;
+  height: 24px;
+}
+
+// Hamburger menu icon
+.menu-icon {
+  position: relative;
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: currentColor;
+    transition: transform 0.2s ease;
+  }
+
+  &::before {
+    top: 6px;
+  }
+
+  &::after {
+    bottom: 6px;
+  }
+}
+
+// Theme toggle icon (sun/moon)
+.theme-icon {
+  &::before {
+    content: '☀️';
+    font-size: 20px;
+  }
+
+  :root[data-theme='dark'] & {
+    &::before {
+      content: '🌙';
+    }
+  }
+}

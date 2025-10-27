@@ -1,0 +1,46 @@
+<div class="crisis-resources">
+  <div class="container">
+    <header class="page-header urgent">
+      <div class="urgent-badge">🆘 Immediate Help Available</div>
+      <h1>Crisis Resources</h1>
+      <p class="page-intro">
+        If you're in immediate danger or experiencing a mental health crisis, please reach out to
+        one of these resources. You don't have to face this alone.
+      </p>
+    </header>
+
+    <section class="resources-grid">
+      @for (resource of resources; track resource.name) {
+      <article class="resource-card">
+        <h2 class="resource-name">{{ resource.name }}</h2>
+        <div class="resource-contact">{{ resource.contact }}</div>
+        <p class="resource-description">{{ resource.description }}</p>
+        <a [href]="resource.url" target="_blank" rel="noopener noreferrer" class="resource-link">
+          Learn More →
+        </a>
+      </article>
+      }
+    </section>
+
+    <section class="additional-info">
+      <div class="info-card">
+        <h2>Emergency Services</h2>
+        <p>
+          If you or someone else is in immediate physical danger, please call
+          <strong>911</strong> or go to your nearest emergency room.
+        </p>
+      </div>
+
+      <div class="info-card">
+        <h2>International Resources</h2>
+        <p>
+          If you're outside the United States, please visit
+          <a href="https://findahelpline.com/" target="_blank" rel="noopener noreferrer"
+            >findahelpline.com</a
+          >
+          to find crisis support in your country.
+        </p>
+      </div>
+    </section>
+  </div>
+</div>

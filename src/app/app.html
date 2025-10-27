@@ -1,0 +1,9 @@
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<steady-header (toggleTheme)="toggleTheme()" (toggleMenu)="toggleNav()"></steady-header>
+
+<steady-navigation [isOpen]="isNavOpen()" (closeNav)="closeNav()"></steady-navigation>
+
+<main id="main-content" class="main-content">
+  <router-outlet />
+</main>
