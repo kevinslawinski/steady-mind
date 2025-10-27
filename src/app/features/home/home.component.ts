@@ -21,7 +21,7 @@ export class HomeComponent {
       question: 'How are you feeling right now?',
       options: [
         { value: 'overwhelmed', label: 'Overwhelmed', emoji: '😰' },
-        { value: 'anxious', label: 'Anxious', emoji: '�' },
+        { value: 'anxious', label: 'Anxious', emoji: '😥' },
         { value: 'sad', label: 'Sad', emoji: '😢' },
         { value: 'stressed', label: 'Stressed', emoji: '😣' },
         { value: 'neutral', label: 'Just checking in', emoji: '😊' },
