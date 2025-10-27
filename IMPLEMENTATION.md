@@ -8,7 +8,9 @@
 
 - **Header Component**: App header with theme toggle and menu button
   - Accessible navigation controls
+  - Transparent background with backdrop blur effect
   - Sticky positioning for always-visible access
+  - Centered app title that links to home
   - Clean, minimal design
 - **Navigation Component**: Side drawer navigation
   - Smooth slide-in animation
@@ -28,19 +30,17 @@
 
 #### 3. **Feature Pages** (`src/app/features/`)
 
-##### Home Page
+##### Home Page (Mobile-First Guided Support)
 
-- Welcoming hero section with calming gradient
-- Quick action cards for main features
-- Breathing exercise visual
-- Clear disclaimer about professional help
+- **Fully Implemented** ✨
+- Interactive Q&A interface for immediate support
+- Progress bar showing question completion
+- Emoji-based option buttons for intuitive selection
+- Question navigation (back/continue)
+- Skip option linking to coping library
+- Welcome message and crisis resources always visible
+- No scrolling unless content exceeds viewport
 - Fully responsive design
-
-##### Guided Support (Foundation)
-
-- Page structure ready for Q&A implementation
-- Calming, supportive messaging
-- Placeholder for future interactive prompts
 
 ##### Coping Library (Foundation)
 
@@ -167,7 +167,7 @@ src/app/
 │   │   ├── header/
 │   │   │   ├── header.component.ts
 │   │   │   ├── header.component.html
-│   │   │   └── header.component.scss
+│   │   │   └── header.component.scss (transparent, sticky)
 │   │   └── navigation/
 │   │       ├── navigation.component.ts
 │   │       ├── navigation.component.html
@@ -176,24 +176,20 @@ src/app/
 │       └── theme.service.ts
 ├── features/
 │   ├── home/
-│   │   ├── home.component.ts
+│   │   ├── home.component.ts (Mobile-first guided Q&A)
 │   │   ├── home.component.html
 │   │   └── home.component.scss
-│   ├── guided-prompts/
-│   │   ├── guided-prompts.component.ts
-│   │   ├── guided-prompts.component.html
-│   │   └── guided-prompts.component.scss
 │   ├── coping-library/
-│   │   ├── coping-library.component.ts
+│   │   ├── coping-library.component.ts (Foundation)
 │   │   ├── coping-library.component.html
 │   │   └── coping-library.component.scss
 │   └── crisis-resources/
-│       ├── crisis-resources.component.ts
+│       ├── crisis-resources.component.ts (Fully implemented)
 │       ├── crisis-resources.component.html
 │       └── crisis-resources.component.scss
+├── globals/
+│   └── app.constants.ts (APP_TITLE, etc.)
 ├── app.ts
-├── app.html
-├── app.scss
 ├── app.config.ts
 └── app.routes.ts
 ```
@@ -202,12 +198,11 @@ src/app/
 
 ### Phase 2 - Content & Features
 
-1. **Guided Prompts System**
+1. **Complete Guided Prompts Logic**
 
-   - Design question flow logic
-   - Create question components
    - Implement recommendation algorithm
-   - Add progress tracking
+   - Add personalized suggestions based on answers
+   - Create results/recommendations page
 
 2. **Coping Mechanisms Library**
 
@@ -226,7 +221,7 @@ src/app/
 
 4. **User Preferences**
    - Save favorite techniques
-   - Remember guided prompt responses
+   - Remember guided prompt responses (optional)
    - Personalized recommendations
    - Accessibility preferences
 

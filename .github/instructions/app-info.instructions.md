@@ -10,10 +10,11 @@ This project is a web application called **Steady Mind**, a mental health compan
 
 ## Core Features
 
-- **Guided Prompts**: Interactive Q&A system to understand user's current state
-- **Coping Mechanism Library**: Curated collection of grounding techniques and coping strategies
-- **Personalized Recommendations**: Suggest relevant coping mechanisms based on user responses
+- **Guided Prompts**: Interactive Q&A system on home page for immediate support (currently implemented)
+- **Coping Mechanism Library**: Curated collection of grounding techniques and coping strategies (foundation implemented)
+- **Personalized Recommendations**: Suggest relevant coping mechanisms based on user responses (to be implemented)
 - **Grounding Focus**: Help users re-center themselves when they're feeling overwhelmed or spiraling
+- **Crisis Resources**: Immediate access to professional help and hotlines (fully implemented)
 
 ## Folder Structure
 
@@ -101,11 +102,13 @@ This project is a web application called **Steady Mind**, a mental health compan
 
 ### User Experience
 
-- **Quick Access**: Users in distress need immediate help - minimize friction
+- **Mobile-First**: Home page immediately presents guided questions - no landing page friction
+- **Quick Access**: Users in distress get immediate support
 - **Progressive Disclosure**: Don't overwhelm with too many options at once
 - **Clear CTAs**: Make it obvious what actions users can take
 - **Empathetic Microcopy**: All text should be supportive and non-judgmental
 - **Privacy First**: Make users feel safe; be transparent about any data handling
+- **Unified Scroll**: No separate scroll containers; natural page flow without unnecessary scrolling
 
 ## Mental Health Considerations
 
@@ -135,14 +138,20 @@ This project is a web application called **Steady Mind**, a mental health compan
 
 ## Future Roadmap
 
-- [ ] Core web application with Angular v20
-- [ ] Guided prompt system implementation
-- [ ] Coping mechanism database/library
-- [ ] Recommendation engine
+- [x] Core web application with Angular v20
+- [x] Home page with immediate guided support (mobile-first)
+- [x] Interactive Q&A interface with progress tracking
+- [x] Crisis resources page with hotlines
+- [x] Light/Dark theme system
+- [x] Transparent, sticky header with backdrop blur
+- [x] Accessible navigation with side drawer
+- [ ] Complete guided prompts recommendation logic
+- [ ] Coping mechanism database/library content
+- [ ] Search and filtering for coping mechanisms
 - [ ] User preferences and personalization
+- [ ] Offline support (PWA capabilities)
 - [ ] iOS app port
 - [ ] Android app port
-- [ ] Offline support (PWA capabilities)
 - [ ] Multi-language support
 
 ---

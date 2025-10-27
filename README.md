@@ -8,8 +8,8 @@ A compassionate mental health companion built with Angular 20, designed to help 
 
 ### Current Implementation
 
-- **🏠 Home Page** - Welcoming landing page with quick access to all features
-- **💬 Guided Support** - Interactive Q&A system (foundation implemented, content coming soon)
+- **🏠 Home/Guided Support** - Mobile-first Q&A interface for immediate support (combined landing + guided prompts)
+- **💬 Interactive Questions** - Progressive question system with emoji-based options and progress tracking
 - **📚 Coping Library** - Curated collection of grounding techniques (foundation implemented)
 - **🆘 Crisis Resources** - Prominent access to crisis hotlines and professional resources
 - **🌓 Light/Dark Mode** - Accessible theme toggle with system preference detection
@@ -18,8 +18,9 @@ A compassionate mental health companion built with Angular 20, designed to help 
 ### Design Principles
 
 - **Calm and Grounding** - Peaceful, supportive design with soft color palettes
-- **Modern and Clean** - Minimalist interface that doesn't overwhelm
+- **Modern and Clean** - Minimalist interface with transparent header and unified scroll
 - **Compassionate** - Warm, supportive language throughout
+- **Mobile-First** - Direct access to support without landing page friction
 - **Privacy First** - Transparent about data handling, minimal data collection
 
 ## 🚀 Getting Started
@@ -56,17 +57,16 @@ npm run watch    # Build in watch mode
 src/
 ├── app/
 │   ├── core/
-│   │   ├── layout/          # Header, Navigation components
+│   │   ├── layout/          # Header (transparent, sticky), Navigation components
 │   │   └── services/        # Theme service, etc.
 │   ├── features/
-│   │   ├── home/            # Landing page
-│   │   ├── guided-prompts/  # Q&A guided support
-│   │   ├── coping-library/  # Coping mechanisms library
-│   │   └── crisis-resources/ # Crisis hotlines & resources
+│   │   ├── home/            # Main guided Q&A interface (mobile-first)
+│   │   ├── coping-library/  # Coping mechanisms library (foundation)
+│   │   └── crisis-resources/ # Crisis hotlines & resources (fully implemented)
 │   ├── app.ts               # Root component
 │   └── app.routes.ts        # Route configuration
 ├── globals/
-│   └── app.constants.ts     # App-wide constants
+│   └── app.constants.ts     # App-wide constants (APP_TITLE, etc.)
 └── styles.scss              # Global styles & theme variables
 ```
 
@@ -113,19 +113,21 @@ src/
 
 ## 📋 Roadmap
 
-### Phase 1 (Current)
+### Phase 1 (Current) ✅
 
 - [x] Core application structure
-- [x] Navigation and layout
+- [x] Navigation and layout (transparent header, side drawer)
 - [x] Theme system with light/dark mode
-- [x] Crisis resources page
-- [x] Foundation for all features
+- [x] Crisis resources page (fully implemented)
+- [x] Mobile-first home page with guided Q&A interface
+- [x] Interactive question system with progress tracking
+- [x] Accessibility features (WCAG 2.1 AA)
 
 ### Phase 2 (Next)
 
-- [ ] Implement guided prompts Q&A system
-- [ ] Build coping mechanisms database
-- [ ] Add recommendation engine
+- [ ] Complete recommendation logic for guided prompts
+- [ ] Build coping mechanisms database/library
+- [ ] Add search and filtering for coping techniques
 - [ ] Create breathing exercises component
 - [ ] Add grounding techniques (5-4-3-2-1, etc.)
 
