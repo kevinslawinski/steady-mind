@@ -4,9 +4,9 @@ applyTo: '**'
 
 # Project Overview
 
-This project is a web application called **SteadyMind**, a mental health companion that helps users identify grounding techniques and coping mechanisms through guided prompts and interactive Q&A.
+This project is a web application called **Steady Mind**, a mental health companion that helps users identify grounding techniques and coping mechanisms through guided prompts and interactive Q&A.
 
-**Important**: SteadyMind is NOT a replacement for professional therapy or medical treatment. No medical assumptions or diagnoses are made. This is a supportive tool to help users explore common coping mechanisms during difficult moments.
+**Important**: Steady Mind is NOT a replacement for professional therapy or medical treatment. No medical assumptions or diagnoses are made. This is a supportive tool to help users explore common coping mechanisms during difficult moments.
 
 ## Core Features
 
