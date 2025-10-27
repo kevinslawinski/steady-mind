@@ -4,24 +4,7 @@
   }
 
   <div class="nav-panel">
-    <div class="nav-header">
-      <img
-        ngSrc="/assets/images/steady-mind-main-1.5.jpg"
-        alt="Steady Mind Logo"
-        width="200"
-        height="50"
-        class="nav-logo"
-        priority
-      />
-      <button
-        class="close-button"
-        (click)="closeNav.emit()"
-        aria-label="Close navigation menu"
-        type="button"
-      >
-        ✕
-      </button>
-    </div>
+    <div class="nav-header"></div>
 
     <ul class="nav-list">
       @for (item of navItems; track item.path) {

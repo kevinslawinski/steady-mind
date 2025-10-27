@@ -14,25 +14,28 @@
 
 .nav-backdrop {
   position: absolute;
-  top: 0;
+  top: 65px; // Start below header so it doesn't dim the menu button
   left: 0;
   width: 100%;
-  height: 100%;
+  height: calc(100% - 65px);
   background-color: rgba(0, 0, 0, 0.5);
   animation: fadeIn 0.2s ease;
 }
 
 .nav-panel {
   position: absolute;
-  top: 0;
+  top: 65px; // Start below the header
   left: -300px;
   width: 280px;
-  height: 100%;
-  background-color: var(--surface-color);
-  box-shadow: var(--shadow-lg);
+  height: calc(100% - 65px); // Fill remaining height
   display: flex;
   flex-direction: column;
   transition: left 0.3s ease;
+
+  // Background is solid throughout
+  background-color: var(--surface-color);
+  box-shadow: var(--shadow-lg);
+  border-top-right-radius: 12px;
 
   .navigation.is-open & {
     left: 0;
@@ -41,39 +44,19 @@
 
 .nav-header {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
-  padding: 1.5rem;
+  padding: 1rem 1.5rem;
   border-bottom: 1px solid var(--border-color);
+  min-height: auto;
 }
 
 .nav-logo {
   height: auto;
   max-height: 40px;
   width: auto;
-  max-width: 150px;
+  max-width: 180px;
   object-fit: contain;
-}
-
-.close-button {
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  padding: 0.25rem 0.5rem;
-  cursor: pointer;
-  border-radius: 4px;
-  color: var(--text-secondary);
-  transition: background-color 0.2s ease, color 0.2s ease;
-
-  &:hover {
-    background-color: var(--hover-color);
-    color: var(--text-primary);
-  }
-
-  &:focus-visible {
-    outline: 2px solid var(--primary-color);
-    outline-offset: 2px;
-  }
 }
 
 .nav-list {

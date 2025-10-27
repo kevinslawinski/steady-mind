@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, output, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input, output, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { APP_TITLE } from '../../../../globals/app.constants';
 
@@ -10,6 +10,7 @@ import { APP_TITLE } from '../../../../globals/app.constants';
   imports: [RouterLink],
 })
 export class HeaderComponent {
+  readonly isNavOpen = input<boolean>(false);
   protected readonly appTitle = signal(APP_TITLE);
   protected readonly toggleTheme = output<void>();
   protected readonly toggleMenu = output<void>();
