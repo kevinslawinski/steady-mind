@@ -1,54 +1,48 @@
 .header {
-  background-color: var(--surface-color);
-  border-bottom: 1px solid var(--border-color);
+  background-color: transparent;
+  border-bottom: none;
   position: sticky;
   top: 0;
   z-index: 100;
-  box-shadow: var(--shadow-sm);
+  backdrop-filter: blur(10px);
+  background-color: rgba(var(--background-rgb), 0.8);
 }
 
 .header-content {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
   align-items: center;
   padding: 1rem 1.5rem;
   max-width: 1200px;
   margin: 0 auto;
+  gap: 1rem;
 }
 
 .header-start {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  justify-content: flex-start;
 }
 
 .header-end {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  justify-content: flex-end;
 }
 
 .app-title {
   margin: 0;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   font-weight: 600;
   color: var(--text-primary);
+  text-align: center;
+  grid-column: 2;
 
   a {
     text-decoration: none;
     color: inherit;
-    transition: color 0.2s ease;
-
-    &:hover,
-    &:focus {
-      color: var(--primary-color);
-    }
-
-    &:focus-visible {
-      outline: 2px solid var(--primary-color);
-      outline-offset: 4px;
-      border-radius: 4px;
-    }
+    cursor: default;
+    pointer-events: none;
   }
 }
 
