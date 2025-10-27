@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { APP_TITLE } from '../../../globals/app.constants';
+import { APP_TITLE, WELCOME_TEXT } from '../../../globals/app.constants';
 
 @Component({
   selector: 'steady-home',
@@ -13,6 +13,7 @@ export class HomeComponent {
   protected readonly appTitle = signal(APP_TITLE);
   protected readonly currentQuestion = signal(0);
   protected readonly selectedAnswer = signal<string | null>(null);
+  protected readonly welcomeText = signal(WELCOME_TEXT);
 
   // Initial guided questions
   protected readonly questions = [
