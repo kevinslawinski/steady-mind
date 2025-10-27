@@ -41,8 +41,18 @@
   a {
     text-decoration: none;
     color: inherit;
-    cursor: default;
-    pointer-events: none;
+    transition: color 0.2s ease;
+
+    &:hover,
+    &:focus {
+      color: var(--primary-color);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--primary-color);
+      outline-offset: 4px;
+      border-radius: 4px;
+    }
   }
 }
 
