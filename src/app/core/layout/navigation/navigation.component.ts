@@ -1,3 +1,4 @@
+import { NgOptimizedImage } from '@angular/common';
 import { ChangeDetectionStrategy, Component, input, output, signal } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { APP_TITLE } from '../../../../globals/app.constants';
@@ -7,7 +8,7 @@ import { APP_TITLE } from '../../../../globals/app.constants';
   templateUrl: './navigation.component.html',
   styleUrl: './navigation.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [RouterLink, RouterLinkActive],
+  imports: [RouterLink, RouterLinkActive, NgOptimizedImage],
 })
 export class NavigationComponent {
   readonly isOpen = input<boolean>(false);

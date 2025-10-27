@@ -47,11 +47,12 @@
   border-bottom: 1px solid var(--border-color);
 }
 
-.nav-title {
-  margin: 0;
-  font-size: 1.25rem;
-  font-weight: 600;
-  color: var(--text-primary);
+.nav-logo {
+  height: auto;
+  max-height: 40px;
+  width: auto;
+  max-width: 150px;
+  object-fit: contain;
 }
 
 .close-button {
