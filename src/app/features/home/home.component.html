@@ -1,58 +1,6 @@
 <div class="home">
-  <!-- Guided questions -->
-  <section class="guided-questions">
-    @for (question of questions; track question.id) { @if (currentQuestion() === question.id) {
-    <div class="question-card">
-      <!-- Progress indicator -->
-      <div class="progress-bar">
-        <div
-          class="progress-fill"
-          [style.width.%]="((currentQuestion() + 1) / questions.length) * 100"
-        ></div>
-      </div>
-
-      <p class="question-number">Question {{ currentQuestion() + 1 }} of {{ questions.length }}</p>
-
-      <h2 class="question-text">{{ question.question }}</h2>
-
-      <p class="skip-option">
-        <a routerLink="/coping-library" class="browse-link">Too impatient for questions</a>
-      </p>
-
-      <div class="options-grid">
-        @for (option of question.options; track option.value) {
-        <button
-          class="option-button"
-          [class.selected]="selectedAnswer() === option.value"
-          (click)="selectAnswer(option.value)"
-          type="button"
-        >
-          <span class="option-emoji" aria-hidden="true">{{ option.emoji }}</span>
-          <span class="option-label">{{ option.label }}</span>
-        </button>
-        }
-      </div>
-
-      <!-- Navigation buttons -->
-      <div class="question-nav">
-        @if (currentQuestion() > 0) {
-        <button class="nav-button secondary" (click)="previousQuestion()" type="button">
-          ← Back
-        </button>
-        }
-        <button
-          class="nav-button primary"
-          [disabled]="!selectedAnswer()"
-          (click)="nextQuestion()"
-          type="button"
-        >
-          @if (currentQuestion() < questions.length - 1) { Continue } @else { Get Recommendations }
-          →
-        </button>
-      </div>
-    </div>
-    } }
-  </section>
+  <!-- Guided questions component -->
+  <steady-guided-prompts />
 
   <!-- Compact welcome message -->
   <section class="welcome">
