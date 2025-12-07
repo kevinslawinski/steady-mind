@@ -1,0 +1,74 @@
+name: Deploy to GitHub Pages
+
+on:
+  workflow_run:
+    workflows: ['Build & Test']
+    types:
+      - completed
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: 'pages'
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    if: ${{ github.event.workflow_run.conclusion == 'success' || github.event_name == 'workflow_dispatch' }}
+    runs-on: ubuntu-latest
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Download build artifacts
+        if: github.event_name == 'workflow_run'
+        id: download
+        uses: actions/download-artifact@v4
+        with:
+          name: build-artifacts
+          path: ./dist
+          run-id: ${{ github.event.workflow_run.id }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Verify artifacts downloaded
+        if: github.event_name == 'workflow_run'
+        run: |
+          if [ ! -d "./dist/steady-mind/browser" ]; then
+            echo "Error: Build artifacts not found or incomplete"
+            exit 1
+          fi
+          echo "Build artifacts verified successfully"
+
+      - name: Checkout (for manual dispatch)
+        if: github.event_name == 'workflow_dispatch'
+        uses: actions/checkout@v4
+
+      - name: Setup Node (for manual dispatch)
+        if: github.event_name == 'workflow_dispatch'
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24.x'
+          cache: 'npm'
+
+      - name: Build (for manual dispatch)
+        if: github.event_name == 'workflow_dispatch'
+        run: |
+          npm ci
+          npm run build-gh
+
+      - name: Upload to GitHub Pages
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./dist/steady-mind/browser
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
