@@ -53,74 +53,6 @@
 // Tablet and larger
 @media (min-width: 768px) {
   .home {
-    padding: 3rem 2rem;
-  }
-
-  .welcome-title {
-    font-size: 3rem;
-  }
-
-  .welcome-text {
-    font-size: 1.25rem;
-  }
-
-  .cta-button {
-    font-size: 1.25rem;
-    padding: 1.25rem 3rem;
-  }
-}
-
-// Desktop
-@media (min-width: 1024px) {
-  .welcome-title {
-    font-size: 3.5rem;
-  }
-}
-
-// Reduced motion support
-@media (prefers-reduced-motion: reduce) {
-  .cta-button {
-    transition: none;
-  }
-
-  .cta-button:hover {
-    transform: none;
-  }
-}
-
-// Footer note
-.footer-note {
-  padding: 1.5rem 0 1rem;
-  text-align: center;
-}
-
-.disclaimer-compact {
-  font-size: 0.9rem;
-  color: var(--text-secondary);
-  margin: 0;
-}
-
-.crisis-link {
-  color: var(--accent-color);
-  font-weight: 600;
-  text-decoration: underline;
-  transition: color 0.2s ease;
-
-  &:hover,
-  &:focus {
-    color: var(--accent-dark);
-  }
-
-  &:focus-visible {
-    outline: 2px solid var(--accent-color);
-    outline-offset: 2px;
-    border-radius: 2px;
-  }
-}
-
-// Tablet and larger
-@media (min-width: 768px) {
-  .home {
     padding: 2rem;
     max-width: 700px;
   }
@@ -132,26 +64,6 @@
   .welcome-text {
     font-size: 1.125rem;
   }
-
-  .question-card {
-    gap: 2rem;
-  }
-
-  .question-text {
-    font-size: 1.75rem;
-  }
-
-  .options-grid {
-    gap: 1rem;
-  }
-
-  .option-button {
-    padding: 1.25rem 1.5rem;
-  }
-
-  .nav-button {
-    padding: 1rem 2rem;
-  }
 }
 
 // Desktop
@@ -159,30 +71,11 @@
   .home {
     max-width: 800px;
   }
-
-  .question-card {
-    gap: 2rem;
-  }
-
-  .question-text {
-    font-size: 2rem;
-  }
-
-  .progress-bar {
-    height: 8px;
-  }
 }
 
 // Reduced motion support
 @media (prefers-reduced-motion: reduce) {
-  .progress-fill,
-  .option-button,
-  .nav-button {
+  .crisis-link {
     transition: none;
-  }
-
-  .option-button:hover,
-  .nav-button:hover {
-    transform: none;
   }
 }
