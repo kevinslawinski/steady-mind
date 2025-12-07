@@ -1,1 +1,211 @@
 /* You can add global styles to this file, and also import other style files */
+
+/* ===== CSS Reset & Base Styles ===== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  line-height: 1.5;
+  min-height: 100vh;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+/* ===== Theme Variables ===== */
+
+/* Light Theme (Default) */
+:root {
+  /* Primary Colors - Calming Blues */
+  --primary-color: #4a90e2;
+  --primary-light: #e3f2fd;
+  --primary-dark: #2471c7;
+
+  /* Secondary Colors - Soft Greens */
+  --secondary-color: #66bb6a;
+  --secondary-light: #e8f5e9;
+  --secondary-dark: #4caf50;
+
+  /* Accent Colors - Warm Support */
+  --accent-color: #ff7043;
+  --accent-light: #fff3e0;
+  --accent-dark: #f4511e;
+
+  /* Neutral Colors */
+  --surface-color: #ffffff;
+  --surface-alt: #f8f9fa;
+  --background-color: #fafbfc;
+  --border-color: #e1e4e8;
+  --hover-color: #f3f4f6;
+
+  /* Text Colors */
+  --text-primary: #24292e;
+  --text-secondary: #586069;
+  --text-tertiary: #959da5;
+
+  /* RGB values for backdrop effects */
+  --background-rgb: 250, 251, 252;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.07);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-normal: 250ms ease;
+  --transition-slow: 350ms ease;
+}
+
+/* Dark Theme */
+:root[data-theme='dark'] {
+  /* Primary Colors - Softer Blues for Dark */
+  --primary-color: #64b5f6;
+  --primary-light: #1e3a5f;
+  --primary-dark: #42a5f5;
+
+  /* Secondary Colors - Muted Greens */
+  --secondary-color: #81c784;
+  --secondary-light: #2d4a2e;
+  --secondary-dark: #66bb6a;
+
+  /* Accent Colors - Gentler Warm */
+  --accent-color: #ff8a65;
+  --accent-light: #3e2723;
+  --accent-dark: #ff7043;
+
+  /* Neutral Colors */
+  --surface-color: #1e1e1e;
+  --surface-alt: #2d2d2d;
+  --background-color: #121212;
+  --border-color: #404040;
+  --hover-color: #2d2d2d;
+
+  /* Text Colors */
+  --text-primary: #e8eaed;
+  --text-secondary: #b8bdc3;
+  --text-tertiary: #868a8e;
+
+  /* RGB values for backdrop effects */
+  --background-rgb: 18, 18, 18;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.5);
+}
+
+/* ===== Global Styles ===== */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
+    sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-primary);
+  transition: background-color var(--transition-normal), color var(--transition-normal);
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Focus Visible for Accessibility */
+*:focus {
+  outline: none;
+}
+
+*:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+/* Link Styles */
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+
+  &:hover {
+    color: var(--primary-dark);
+  }
+}
+
+/* Button Base Styles */
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: inherit;
+}
+
+/* Screen Reader Only */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Skip to Main Content Link */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--primary-color);
+  color: white;
+  padding: 8px;
+  text-decoration: none;
+  z-index: 1000;
+
+  &:focus {
+    top: 0;
+  }
+}

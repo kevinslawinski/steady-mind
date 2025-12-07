@@ -1,0 +1,19 @@
+<div class="home">
+  <!-- Guided questions component -->
+  <steady-guided-prompts />
+
+  <!-- Compact welcome message -->
+  <section class="welcome">
+    <p class="welcome-text">
+      {{ welcomeText() }}
+    </p>
+  </section>
+
+  <!-- Quick disclaimer with crisis link -->
+  <section class="footer-note">
+    <p class="disclaimer-compact">
+      In crisis?
+      <a routerLink="/crisis-resources" class="crisis-link">Get immediate help</a>
+    </p>
+  </section>
+</div>

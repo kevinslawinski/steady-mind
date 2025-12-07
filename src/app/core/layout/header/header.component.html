@@ -1,0 +1,31 @@
+<header class="header">
+  <div class="header-content">
+    <div class="header-start">
+      <button
+        class="menu-button"
+        [class.is-open]="isNavOpen()"
+        (click)="toggleMenu.emit()"
+        aria-label="Toggle navigation menu"
+        [attr.aria-expanded]="isNavOpen()"
+        type="button"
+      >
+        <span class="menu-icon"></span>
+      </button>
+    </div>
+
+    <h1 class="app-title">
+      <a routerLink="/" aria-label="Go to home page">{{ appTitle() }}</a>
+    </h1>
+
+    <div class="header-end">
+      <button
+        class="theme-toggle"
+        (click)="toggleTheme.emit()"
+        aria-label="Toggle dark mode"
+        type="button"
+      >
+        <span class="theme-icon"></span>
+      </button>
+    </div>
+  </div>
+</header>
