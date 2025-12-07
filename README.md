@@ -1,6 +1,8 @@
 # Steady Mind 🌿
 
-A compassionate mental health companion built with Angular 20, designed to help users identify grounding techniques and coping mechanisms through guided prompts and interactive experiences.
+A simple mental health app designed to help users identify grounding techniques and coping mechanisms through guided prompts and interactive experiences.
+
+> **⚠️ Project Status**: This project is in **active development** and not yet production-ready. Features are being built iteratively.
 
 > **Important Disclaimer**: Steady Mind is NOT a replacement for professional therapy or medical treatment. This is a supportive tool to help users explore common coping mechanisms during difficult moments.
 
@@ -97,10 +99,11 @@ src/
 
 ## 🛠️ Technology Stack
 
-- **Angular 20** - Latest Angular with signals and standalone components
-- **TypeScript 5.9** - Strongly-typed development
+- **Angular** - Modern framework with signals and standalone components
+- **TypeScript** - Strongly-typed development
 - **SCSS** - Advanced styling with CSS custom properties
-- **RxJS 7.8** - Reactive programming
+- **RxJS** - Reactive programming
+- **Vitest** - Fast unit testing framework
 
 ### Modern Angular Features
 
@@ -139,9 +142,9 @@ src/
 - [ ] iOS/Android app versions
 - [ ] Backend integration (optional)
 
-## 🤝 Contributing
+## 🎯 Development Priorities
 
-This project prioritizes:
+This personal project prioritizes:
 
 - User wellbeing and safety
 - Privacy and data security
@@ -151,7 +154,7 @@ This project prioritizes:
 
 ## 📄 License
 
-This project is private and not yet licensed for public use.
+This is a personal project in active development.
 
 ## 🆘 Mental Health Resources
 
@@ -161,69 +164,3 @@ If you or someone you know is in crisis:
 - **Crisis Text Line**: Text HOME to 741741
 - **SAMHSA National Helpline**: 1-800-662-4357
 - **Emergency Services**: Call 911
-
----
-
-Built with 💚 to support mental wellness
-
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.7 with the command:
-
-```bash
-ng new steady-mind --directory . --inline-style --inline-template --prefix=steady --routing --style=scss --zoneless
-```
-
-## Development server
-
-To start a local development server, run:
-
-```bash
-ng serve
-```
-
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.

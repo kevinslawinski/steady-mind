@@ -1,6 +1,6 @@
-# Contributing to Steady Mind
+# Development Guidelines for Steady Mind
 
-Thank you for your interest in contributing to Steady Mind! This project has a special responsibility because it supports people during difficult moments.
+This document outlines the development standards and principles for building Steady Mind. This is a personal project, and these guidelines serve as a reference for maintaining consistency and quality throughout development.
 
 ## 🧭 Core Principles
 
@@ -45,7 +45,7 @@ When contributing to Steady Mind, please keep these principles in mind:
 
 ### Angular Best Practices
 
-This project uses Angular 20+ with modern features:
+This project uses modern Angular features:
 
 - ✅ Use signals for state management
 - ✅ Use standalone components (no NgModules)
@@ -88,7 +88,7 @@ export class ExampleComponent {
 - Test with reduced motion preferences
 - Mobile-first responsive design
 
-## 📝 Pull Request Process
+## 🔄 Development Workflow
 
 1. **Create a feature branch** from `main`
 
@@ -96,7 +96,7 @@ export class ExampleComponent {
    git checkout -b feature/your-feature-name
    ```
 
-2. **Make your changes** following the guidelines above
+2. **Make changes** following the guidelines above
 
 3. **Test thoroughly**
 
@@ -113,12 +113,6 @@ export class ExampleComponent {
    fix: improve color contrast in dark mode
    docs: update crisis resources
    ```
-
-5. **Create a Pull Request** with:
-   - Clear description of changes
-   - Screenshots/videos for UI changes
-   - Accessibility testing notes
-   - Any mental health content review notes
 
 ## 🎨 Design System
 
@@ -192,21 +186,15 @@ When updating crisis resources:
 4. **Clear Purpose**: Explain what each resource provides
 5. **Prominent Display**: Crisis help should always be easy to find
 
-## ❓ Questions or Concerns?
+## 📝 Development Notes
 
-If you have questions about:
+When working on this project, always consider:
 
 - Mental health content appropriateness
 - Accessibility requirements
-- Technical implementation
-- Design decisions
-
-Please open an issue for discussion before implementing.
-
-## 🙏 Thank You
-
-Your contributions help create a safer, more supportive tool for people who need it. Thank you for taking the time to contribute thoughtfully and compassionately.
+- Technical implementation best practices
+- Design decisions that prioritize user wellbeing
 
 ---
 
-Remember: We're building a tool to support people during difficult moments. Every decision should prioritize their wellbeing, privacy, and ease of use.
+Remember: This tool supports people during difficult moments. Every decision should prioritize their wellbeing, privacy, and ease of use.

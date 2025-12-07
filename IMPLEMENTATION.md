@@ -115,7 +115,7 @@ Text: #e8eaed      (Light Gray)
 
 ### Technology Highlights
 
-#### Modern Angular 20 Features
+#### Modern Angular Features
 
 ✅ **Signals for State Management**
 
@@ -271,7 +271,3 @@ Every decision in this app prioritizes:
 4. **Privacy** - Minimal data, transparent usage
 5. **Evidence-Based** - Only proven techniques
 6. **Calm** - Peaceful, grounding visual design
-
----
-
-**Built with 💚 to support mental wellness**
