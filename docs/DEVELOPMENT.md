@@ -5,12 +5,23 @@ Personal development reference for building Steady Mind.
 ## Project Setup
 
 ```bash
-npm install
-npm start  # Dev server at localhost:4200
-npm test   # Run tests in watch mode
-npm run test:no-watch  # Run tests once (CI)
-npm run build-gh  # Build for GitHub Pages
+npm install              # Install dependencies
+npm start                # Dev server at localhost:4200
+npm test                 # Run tests in watch mode
+npm run test:no-watch    # Run tests once (CI)
+npm run build            # Build for production
+npm run build-gh         # Build for GitHub Pages
+npm run watch            # Build in watch mode
 ```
+
+## Technology Stack
+
+- **Angular 20+** - Modern framework with signals and standalone components
+- **TypeScript** - Strongly-typed development with strict mode
+- **SCSS** - Advanced styling with CSS custom properties and mixins
+- **RxJS** - Reactive programming (minimal usage, prefer signals)
+- **Vitest** - Fast unit testing framework
+- **GitHub Actions** - CI/CD for automated testing and deployment
 
 ## Architecture
 
@@ -26,23 +37,33 @@ npm run build-gh  # Build for GitHub Pages
 
 ### Project Structure
 
+**High-level organization:**
+
 ```
-src/app/
-├── core/
-│   ├── layout/
-│   │   ├── header/           # Sticky header with theme toggle
-│   │   └── navigation/       # Side drawer navigation
-│   └── services/
-│       ├── theme.service.ts          # Light/dark mode
-│       └── coping-strategies.service.ts  # Strategy management
-├── features/
-│   ├── home/                 # Guided Q&A interface
-│   ├── guided-prompts/       # Interactive prompt questions
-│   ├── coping-library/       # Full strategy library with search/filter
-│   └── crisis-resources/     # Hotline information
-└── globals/
-    └── app.constants.ts      # Types, interfaces, default data
+src/
+├── app/
+│   ├── core/              # Reusable components & services
+│   │   ├── layout/        # Header, navigation
+│   │   └── services/      # Theme, coping strategies
+│   ├── features/          # Feature modules
+│   │   ├── home/
+│   │   ├── guided-prompts/
+│   │   ├── coping-library/
+│   │   └── crisis-resources/
+│   └── app.{ts,routes.ts} # Root component & routing
+├── globals/               # Shared constants & types
+├── styles.scss            # Global utilities & theme
+└── assets/                # Static files
+
+docs/                      # All documentation
 ```
+
+**Key files:**
+
+- `app.constants.ts` - Types, interfaces, default strategies
+- `theme.service.ts` - Light/dark mode management
+- `coping-strategies.service.ts` - Strategy filtering & localStorage
+- `styles.scss` - Utility classes, CSS variables, SCSS mixins
 
 ### Theming
 
@@ -141,4 +162,4 @@ export class FeatureNameComponent {
 
 - Feature branches: `feature/*` - tests run but no deployment
 - Main branch: tests run → artifacts uploaded → deployment triggered
-- See DEPLOYMENT.md for details
+- See [DEPLOYMENT.md](DEPLOYMENT.md) for details

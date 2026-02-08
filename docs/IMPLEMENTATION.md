@@ -17,7 +17,6 @@
 ### Services
 
 - **Coping Strategies Service**: Signal-based state management for strategies, filtering (search, categories, emotions, favorites), localStorage persistence for user preferences, recommendation logic based on emotion tags
-- **Theme Service**: Signal-based light/dark mode with system detection and localStorage persistence
 
 ### Data Models
 
@@ -27,27 +26,11 @@
 
 ### CSS Architecture
 
-- **Utility-First System**: Global reusable utility classes for buttons, cards, chips, inputs, grids, badges (see `docs/CSS-ARCHITECTURE.md`)
-- **SCSS Mixins**: Responsive breakpoint mixins (`@include tablet`, `@include desktop`, etc.) for consistent media queries
-- **CSS Variables**: Theme-aware color system, transitions, shadows
-- **Component Styles**: Only unique, component-specific styles after utility consolidation (~50% CSS reduction)
+Utility-first system with global classes and SCSS mixins. See [CSS-ARCHITECTURE.md](CSS-ARCHITECTURE.md) for complete documentation.
 
 ### Accessibility
 
-- WCAG 2.1 AA compliance
-- Keyboard navigation throughout
-- Screen reader support with semantic HTML and ARIA labels
-- Focus indicators on all interactive elements
-- Respects `prefers-reduced-motion`
-
-### Angular Patterns Used
-
-- Signals for reactive state
-- Standalone components (no NgModules)
-- New control flow (`@if`, `@for`)
-- `input()` and `output()` functions
-- OnPush change detection
-- Lazy-loaded routes
+Fully WCAG 2.1 AA compliant. See [DEVELOPMENT.md](DEVELOPMENT.md#accessibility-standards) for detailed requirements.
 
 ## Planned Features
 
