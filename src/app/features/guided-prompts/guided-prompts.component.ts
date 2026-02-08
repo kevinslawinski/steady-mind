@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { GUIDED_QUESTIONS } from '../../../globals/app.constants';
 
 @Component({
   selector: 'steady-guided-prompts',
@@ -12,31 +13,8 @@ export class GuidedPromptsComponent {
   protected readonly currentQuestion = signal(0);
   protected readonly selectedAnswer = signal<string | null>(null);
 
-  // Guided questions
-  protected readonly questions = [
-    {
-      id: 0,
-      question: 'How are you feeling right now?',
-      options: [
-        { value: 'overwhelmed', label: 'Overwhelmed', emoji: '😰' },
-        { value: 'anxious', label: 'Anxious', emoji: '😥' },
-        { value: 'sad', label: 'Sad', emoji: '😢' },
-        { value: 'stressed', label: 'Stressed', emoji: '😣' },
-        { value: 'neutral', label: 'Just checking in', emoji: '😊' },
-      ],
-    },
-    {
-      id: 1,
-      question: 'What would be most helpful right now?',
-      options: [
-        { value: 'calm-down', label: 'Something to help me calm down', emoji: '🌊' },
-        { value: 'ground', label: 'Help me feel grounded', emoji: '🌱' },
-        { value: 'distract', label: 'A gentle distraction', emoji: '✨' },
-        { value: 'breathe', label: 'Breathing exercises', emoji: '💨' },
-        { value: 'explore', label: 'Just want to explore', emoji: '🧭' },
-      ],
-    },
-  ];
+  // Use questions from constants
+  protected readonly questions = GUIDED_QUESTIONS;
 
   protected selectAnswer(value: string): void {
     this.selectedAnswer.set(value);
