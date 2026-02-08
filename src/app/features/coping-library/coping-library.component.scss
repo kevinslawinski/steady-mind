@@ -1,38 +1,7 @@
-.coping-library {
-  min-height: 100vh;
-  padding: 2rem 1.5rem;
-}
-
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
 // ========================================
-// Page Header
+// Coping Library Specific Styles
+// Note: Common styles (cards, buttons, chips, etc.) are in global styles.scss
 // ========================================
-
-.page-header {
-  text-align: center;
-  margin-bottom: 2.5rem;
-
-  h1 {
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: var(--text-primary);
-    margin: 0 0 1rem 0;
-  }
-}
-
-.page-intro {
-  font-size: 1.125rem;
-  color: var(--text-secondary);
-  line-height: 1.6;
-  margin: 0;
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
-}
 
 // ========================================
 // Search Section
@@ -49,60 +18,6 @@
 .search-bar {
   flex: 1;
   min-width: 250px;
-  position: relative;
-  display: flex;
-  align-items: center;
-  background-color: var(--surface-color);
-  border-radius: 12px;
-  padding: 0.75rem 1rem;
-  box-shadow: var(--shadow-sm);
-  border: 2px solid transparent;
-  transition: all 0.2s ease;
-
-  &:focus-within {
-    border-color: var(--accent-color);
-    box-shadow: var(--shadow-md);
-  }
-}
-
-.search-icon {
-  font-size: 1.25rem;
-  margin-right: 0.75rem;
-  opacity: 0.6;
-}
-
-.search-input {
-  flex: 1;
-  border: none;
-  background: transparent;
-  font-size: 1rem;
-  color: var(--text-primary);
-  outline: none;
-
-  &::placeholder {
-    color: var(--text-tertiary);
-  }
-}
-
-.clear-search {
-  background: none;
-  border: none;
-  color: var(--text-tertiary);
-  cursor: pointer;
-  font-size: 1.25rem;
-  padding: 0.25rem;
-  border-radius: 4px;
-  transition: all 0.2s ease;
-
-  &:hover {
-    color: var(--text-primary);
-    background-color: var(--background-secondary);
-  }
-
-  &:focus-visible {
-    outline: 2px solid var(--accent-color);
-    outline-offset: 2px;
-  }
 }
 
 .filter-controls {
@@ -124,7 +39,7 @@
   color: var(--text-primary);
   cursor: pointer;
   box-shadow: var(--shadow-sm);
-  transition: all 0.2s ease;
+  transition: all var(--transition-fast);
   white-space: nowrap;
 
   .icon {
@@ -148,19 +63,6 @@
   }
 }
 
-.badge {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 1.5rem;
-  height: 1.5rem;
-  padding: 0 0.4rem;
-  background-color: rgba(255, 255, 255, 0.3);
-  border-radius: 10px;
-  font-size: 0.75rem;
-  font-weight: 600;
-}
-
 // ========================================
 // Filter Panel
 // ========================================
@@ -171,18 +73,6 @@
   padding: 1.5rem;
   margin-bottom: 1.5rem;
   box-shadow: var(--shadow-md);
-  animation: slideDown 0.3s ease;
-}
-
-@keyframes slideDown {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
 .filter-group {
@@ -208,63 +98,12 @@
   gap: 0.5rem;
 }
 
-.chip {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  padding: 0.5rem 1rem;
-  background-color: var(--background-secondary);
-  border: 2px solid transparent;
-  border-radius: 20px;
-  font-size: 0.9rem;
-  font-weight: 500;
-  color: var(--text-primary);
-  cursor: pointer;
-  transition: all 0.2s ease;
-
-  &:hover {
-    background-color: var(--background-primary);
-    transform: translateY(-1px);
-  }
-
-  &:focus-visible {
-    outline: 2px solid var(--accent-color);
-    outline-offset: 2px;
-  }
-
-  &.active {
-    background-color: var(--accent-color);
-    color: white;
-    border-color: var(--accent-color);
-  }
-}
-
 .chip-icon {
   font-size: 1.1rem;
 }
 
 .clear-filters {
-  padding: 0.75rem 1.5rem;
-  background-color: transparent;
-  border: 2px solid var(--text-tertiary);
-  border-radius: 12px;
-  font-size: 0.95rem;
-  font-weight: 500;
-  color: var(--text-secondary);
-  cursor: pointer;
-  transition: all 0.2s ease;
   width: 100%;
-
-  &:hover {
-    border-color: var(--text-secondary);
-    color: var(--text-primary);
-    background-color: var(--background-secondary);
-  }
-
-  &:focus-visible {
-    outline: 2px solid var(--accent-color);
-    outline-offset: 2px;
-  }
 }
 
 // ========================================
@@ -282,14 +121,8 @@
 }
 
 // ========================================
-// Strategy Cards Grid
+// Strategy Card Specific
 // ========================================
-
-.strategies-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: 1.5rem;
-}
 
 .strategy-card {
   background-color: var(--surface-color);
@@ -303,10 +136,6 @@
     box-shadow: var(--shadow-lg);
   }
 }
-
-// ========================================
-// Card Header
-// ========================================
 
 .card-header {
   padding: 1.5rem;
@@ -346,7 +175,7 @@
   font-size: 1.5rem;
   cursor: pointer;
   padding: 0.25rem;
-  transition: transform 0.2s ease;
+  transition: transform var(--transition-fast);
   line-height: 1;
 
   &:hover {
@@ -409,7 +238,7 @@
   font-weight: 600;
   color: var(--text-primary);
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all var(--transition-fast);
 
   &:hover {
     background-color: var(--background-primary);
@@ -431,18 +260,6 @@
 
 .card-body {
   padding: 0 1.5rem 1.5rem;
-  animation: expandDown 0.3s ease;
-}
-
-@keyframes expandDown {
-  from {
-    opacity: 0;
-    max-height: 0;
-  }
-  to {
-    opacity: 1;
-    max-height: 500px;
-  }
 }
 
 .steps-title {
@@ -517,14 +334,6 @@
 // ========================================
 
 @media (max-width: 768px) {
-  .coping-library {
-    padding: 1.5rem 1rem;
-  }
-
-  .page-header h1 {
-    font-size: 2rem;
-  }
-
   .search-section {
     flex-direction: column;
   }
@@ -540,8 +349,20 @@
       flex: 1;
     }
   }
+}
 
-  .strategies-grid {
-    grid-template-columns: 1fr;
+// ========================================
+// Reduced Motion
+// ========================================
+
+@media (prefers-reduced-motion: reduce) {
+  .strategy-card,
+  .filter-toggle,
+  .favorites-toggle {
+    transition: none;
+
+    &:hover {
+      transform: none;
+    }
   }
 }

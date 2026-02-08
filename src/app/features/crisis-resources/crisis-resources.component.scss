@@ -1,32 +1,17 @@
+// ========================================
+// Crisis Resources Specific Styles
+// Note: Common styles (cards, buttons, grids, etc.) are in global styles.scss
+// ========================================
+
 .crisis-resources {
-  min-height: 100vh;
-  padding: 2rem 1.5rem;
   background: linear-gradient(135deg, var(--surface-color) 0%, var(--accent-light) 100%);
 }
 
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.page-header {
-  text-align: center;
+.page-header.urgent {
+  background-color: var(--surface-color);
+  padding: 2rem;
+  border: 3px solid var(--accent-color);
   margin-bottom: 3rem;
-
-  &.urgent {
-    background-color: var(--surface-color);
-    padding: 2rem;
-    border-radius: 16px;
-    border: 3px solid var(--accent-color);
-    box-shadow: var(--shadow-lg);
-  }
-
-  h1 {
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: var(--text-primary);
-    margin: 0 0 1rem 0;
-  }
 }
 
 .urgent-badge {
@@ -40,13 +25,6 @@
   margin-bottom: 1rem;
 }
 
-.page-intro {
-  font-size: 1.125rem;
-  color: var(--text-secondary);
-  line-height: 1.6;
-  margin: 0;
-}
-
 .resources-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -55,15 +33,7 @@
 }
 
 .resource-card {
-  background-color: var(--surface-color);
-  border: 2px solid var(--border-color);
-  border-radius: 16px;
-  padding: 2rem;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-
   &:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-lg);
     border-color: var(--accent-color);
   }
 }
@@ -94,7 +64,7 @@
   color: var(--primary-color);
   text-decoration: none;
   font-weight: 600;
-  transition: color 0.2s ease;
+  transition: color var(--transition-fast);
 
   &:hover,
   &:focus {
@@ -109,16 +79,7 @@
   }
 }
 
-.additional-info {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
-}
-
 .info-card {
-  background-color: var(--surface-color);
-  border-radius: 16px;
-  padding: 2rem;
   border-left: 4px solid var(--primary-color);
 
   h2 {
@@ -134,35 +95,8 @@
     margin: 0;
   }
 
-  a {
-    color: var(--primary-color);
-    text-decoration: underline;
-    transition: color 0.2s ease;
-
-    &:hover,
-    &:focus {
-      color: var(--primary-dark);
-    }
-
-    &:focus-visible {
-      outline: 2px solid var(--primary-color);
-      outline-offset: 2px;
-      border-radius: 2px;
-    }
-  }
-
   strong {
     color: var(--accent-color);
     font-weight: 700;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .resource-card {
-    transition: none;
-
-    &:hover {
-      transform: none;
-    }
   }
 }

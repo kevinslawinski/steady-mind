@@ -1,5 +1,5 @@
-<div class="crisis-resources">
-  <div class="container">
+<div class="crisis-resources page-container">
+  <div class="container content-container">
     <header class="page-header urgent">
       <div class="urgent-badge">🆘 Immediate Help Available</div>
       <h1>Crisis Resources</h1>
@@ -11,19 +11,19 @@
 
     <section class="resources-grid">
       @for (resource of resources; track resource.name) {
-      <article class="resource-card">
-        <h2 class="resource-name">{{ resource.name }}</h2>
-        <div class="resource-contact">{{ resource.contact }}</div>
-        <p class="resource-description">{{ resource.description }}</p>
-        <a [href]="resource.url" target="_blank" rel="noopener noreferrer" class="resource-link">
-          Learn More →
-        </a>
-      </article>
+        <article class="resource-card card card-bordered card-hover">
+          <h2 class="resource-name">{{ resource.name }}</h2>
+          <div class="resource-contact">{{ resource.contact }}</div>
+          <p class="resource-description">{{ resource.description }}</p>
+          <a [href]="resource.url" target="_blank" rel="noopener noreferrer" class="resource-link">
+            Learn More →
+          </a>
+        </article>
       }
     </section>
 
-    <section class="additional-info">
-      <div class="info-card">
+    <section class="additional-info grid-auto-fit">
+      <div class="info-card card">
         <h2>Emergency Services</h2>
         <p>
           If you or someone else is in immediate physical danger, please call
@@ -31,7 +31,7 @@
         </p>
       </div>
 
-      <div class="info-card">
+      <div class="info-card card">
         <h2>International Resources</h2>
         <p>
           If you're outside the United States, please visit

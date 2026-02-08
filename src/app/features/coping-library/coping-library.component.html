@@ -1,5 +1,5 @@
-<div class="coping-library">
-  <div class="container">
+<div class="coping-library page-container">
+  <div class="container content-container">
     <!-- Page Header -->
     <header class="page-header">
       <h1>Coping Library</h1>
@@ -11,17 +11,16 @@
 
     <!-- Search and Filter Bar -->
     <section class="search-section">
-      <div class="search-bar">
-        <span class="search-icon">🔍</span>
+      <div class="search-bar input-group">
+        <span class="input-icon">🔍</span>
         <input
           type="text"
           placeholder="Search strategies..."
           [value]="searchQuery()"
           (input)="onSearchChange($event)"
-          class="search-input"
         />
         @if (searchQuery()) {
-          <button class="clear-search" (click)="clearAllFilters()" aria-label="Clear search">
+          <button class="input-clear" (click)="clearAllFilters()" aria-label="Clear search">
             ✕
           </button>
         }
@@ -32,7 +31,7 @@
           <span class="icon">⚙️</span>
           Filters
           @if (activeFiltersCount() > 0) {
-            <span class="badge">{{ activeFiltersCount() }}</span>
+            <span class="badge badge-count">{{ activeFiltersCount() }}</span>
           }
         </button>
 
@@ -49,7 +48,7 @@
 
     <!-- Filter Panel -->
     @if (showFilters()) {
-      <section class="filter-panel">
+      <section class="filter-panel slide-down">
         <div class="filter-group">
           <h3>Categories</h3>
           <div class="filter-chips">
@@ -82,7 +81,9 @@
         </div>
 
         @if (activeFiltersCount() > 0) {
-          <button class="clear-filters" (click)="clearAllFilters()">Clear All Filters</button>
+          <button class="btn-ghost clear-filters" (click)="clearAllFilters()">
+            Clear All Filters
+          </button>
         }
       </section>
     }
@@ -99,20 +100,20 @@
     </div>
 
     <!-- Strategy Cards Grid -->
-    <section class="strategies-grid">
+    <section class="strategies-grid grid-auto-fill">
       @if (strategies().length === 0) {
         <div class="empty-state">
           <p class="empty-icon">🔍</p>
           <p class="empty-message">No strategies match your current filters.</p>
-          <button class="clear-filters" (click)="clearAllFilters()">Clear Filters</button>
+          <button class="btn-ghost clear-filters" (click)="clearAllFilters()">Clear Filters</button>
         </div>
       } @else {
         @for (strategy of strategies(); track strategy.id) {
-          <article class="strategy-card" [class.expanded]="isExpanded(strategy.id)">
+          <article class="strategy-card card-hover" [class.expanded]="isExpanded(strategy.id)">
             <!-- Card Header -->
             <div class="card-header" (click)="toggleExpanded(strategy.id)">
               <div class="header-top">
-                <div class="category-badge">
+                <div class="category-badge badge">
                   <span class="category-icon">{{ getCategoryIcon(strategy.category) }}</span>
                   <span class="category-label">{{ strategy.category }}</span>
                 </div>
@@ -153,7 +154,7 @@
 
             <!-- Expandable Steps Section -->
             @if (isExpanded(strategy.id)) {
-              <div class="card-body">
+              <div class="card-body expand-down">
                 <h3 class="steps-title">Step-by-Step</h3>
                 <ol class="steps-list">
                   @for (step of strategy.steps; track $index) {
