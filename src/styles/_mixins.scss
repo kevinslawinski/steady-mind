@@ -37,3 +37,59 @@ $breakpoint-wide: 1440px;
     @content;
   }
 }
+
+/* ===== Component Utility Mixins ===== */
+
+@mixin card {
+  background-color: var(--surface-color);
+  border-radius: 16px;
+  box-shadow: var(--shadow-md);
+  transition:
+    transform var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+@mixin card-hover {
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    &:hover {
+      transform: none;
+    }
+  }
+}
+
+@mixin btn-base {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: all var(--transition-fast);
+}
+
+@mixin btn-secondary {
+  @include btn-base;
+  background-color: var(--surface-color);
+  color: var(--text-primary);
+  border-color: var(--border-color);
+
+  &:hover:not(:disabled) {
+    background-color: var(--hover-color);
+    border-color: var(--primary-color);
+  }
+}
+
+@mixin chip-active {
+  background-color: var(--accent-color);
+  color: white;
+  border-color: var(--accent-color);
+}

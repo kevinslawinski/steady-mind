@@ -29,39 +29,19 @@
 
 .filter-toggle,
 .favorites-toggle {
-  display: flex;
+  @include btn-secondary;
+  display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.75rem 1.25rem;
-  background-color: var(--surface-color);
-  border: 2px solid transparent;
   border-radius: 12px;
-  font-size: 1rem;
-  font-weight: 500;
-  color: var(--text-primary);
-  cursor: pointer;
-  box-shadow: var(--shadow-sm);
-  transition: all var(--transition-fast);
   white-space: nowrap;
 
   .icon {
     font-size: 1.25rem;
   }
 
-  &:hover {
-    transform: translateY(-1px);
-    box-shadow: var(--shadow-md);
-  }
-
-  &:focus-visible {
-    outline: 2px solid var(--accent-color);
-    outline-offset: 2px;
-  }
-
   &.active {
-    background-color: var(--accent-color);
-    color: white;
-    border-color: var(--accent-color);
+    @include chip-active;
   }
 }
 
@@ -70,11 +50,9 @@
 // ========================================
 
 .filter-panel {
-  background-color: var(--surface-color);
-  border-radius: 16px;
+  @include card;
   padding: 1.5rem;
   margin-bottom: 1.5rem;
-  box-shadow: var(--shadow-md);
 }
 
 .filter-group {
@@ -127,16 +105,11 @@
 // ========================================
 
 .strategy-card {
-  background-color: var(--surface-color);
-  border-radius: 16px;
-  box-shadow: var(--shadow-md);
+  @include card;
   overflow: hidden;
   transition: all 0.3s ease;
 
-  &:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-lg);
-  }
+  @include card-hover;
 }
 
 .card-header {
@@ -227,28 +200,16 @@
 }
 
 .expand-toggle {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
+  @include btn-base;
   width: 100%;
+  gap: 0.5rem;
   padding: 0.75rem;
-  background-color: var(--background-secondary);
-  border: none;
   border-radius: 8px;
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: var(--text-primary);
-  cursor: pointer;
-  transition: all var(--transition-fast);
+  justify-content: center;
+  background-color: var(--background-secondary);
 
   &:hover {
     background-color: var(--background-primary);
-  }
-
-  &:focus-visible {
-    outline: 2px solid var(--accent-color);
-    outline-offset: 2px;
   }
 }
 
