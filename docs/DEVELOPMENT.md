@@ -16,7 +16,7 @@ npm run watch            # Build in watch mode
 
 ## Technology Stack
 
-- **Angular 20+** - Modern framework with signals and standalone components
+- **Angular 21+** - Modern framework with signals and standalone components
 - **TypeScript** - Strongly-typed development with strict mode
 - **SCSS** - Advanced styling with CSS custom properties and mixins
 - **RxJS** - Reactive programming (minimal usage, prefer signals)
@@ -46,8 +46,8 @@ src/
 │   │   ├── layout/        # Header, navigation
 │   │   └── services/      # Theme, coping strategies
 │   ├── features/          # Feature modules
-│   │   ├── home/
-│   │   ├── guided-prompts/
+│   │   ├── home/          # Landing page with embedded guided prompts
+│   │   ├── guided-prompts/ # Q&A component (used within home)
 │   │   ├── coping-library/
 │   │   └── crisis-resources/
 │   └── app.{ts,routes.ts} # Root component & routing
@@ -64,6 +64,13 @@ docs/                      # All documentation
 - `theme.service.ts` - Light/dark mode management
 - `coping-strategies.service.ts` - Strategy filtering & localStorage
 - `styles.scss` - Utility classes, CSS variables, SCSS mixins
+
+**Routing:**
+
+- `/` - Home page (includes embedded guided prompts component)
+- `/coping-library` - Searchable strategy library
+- `/crisis-resources` - Crisis hotlines and resources
+- Note: /guided-prompts is not a separate route as it is embedded in the home component
 
 ### Theming
 

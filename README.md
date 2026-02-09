@@ -39,7 +39,7 @@ For detailed setup, scripts, architecture, and development guidelines, see [docs
 
 ## 🏗️ Project Overview
 
-Steady Mind is built with **Angular 20+** using modern patterns like signals, standalone components, and a utility-first CSS architecture. The app is organized into:
+Steady Mind is built with **Angular 21+** using modern patterns like signals, standalone components, and a utility-first CSS architecture. The app is organized into:
 
 - **Core**: Layout components (header, navigation) and services (theme, coping strategies)
 - **Features**: Home, guided prompts, coping library, crisis resources
