@@ -3,7 +3,7 @@
 // Note: Common styles (buttons, etc.) are in global styles.scss
 // ========================================
 
-@import '../../../styles/mixins';
+@use '../../../styles/mixins' as *;
 
 .guided-questions {
   flex: 1;

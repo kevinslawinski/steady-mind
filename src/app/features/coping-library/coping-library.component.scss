@@ -3,7 +3,7 @@
 // Note: Common styles (cards, buttons, chips, etc.) are in global styles.scss
 // ========================================
 
-@import '../../../styles/mixins';
+@use '../../../styles/mixins' as *;
 
 // ========================================
 // Search Section

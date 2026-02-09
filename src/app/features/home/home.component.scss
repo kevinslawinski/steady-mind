@@ -3,7 +3,7 @@
 // Note: Common styles (text utilities, etc.) are in global styles.scss
 // ========================================
 
-@import '../../../styles/mixins';
+@use '../../../styles/mixins' as *;
 
 .home {
   min-height: calc(100vh - 65px);
