@@ -1,13 +1,5 @@
-// ========================================
-// Coping Library Specific Styles
-// Note: Common styles (cards, buttons, chips, etc.) are in global styles.scss
-// ========================================
-
+// Common styles (cards, buttons, chips) are in global styles.scss
 @use '../../../styles/mixins' as *;
-
-// ========================================
-// Search Section
-// ========================================
 
 .search-section {
   margin-bottom: 1.5rem;
@@ -44,10 +36,6 @@
     @include chip-active;
   }
 }
-
-// ========================================
-// Filter Panel
-// ========================================
 
 .filter-panel {
   @include card;
@@ -86,10 +74,6 @@
   width: 100%;
 }
 
-// ========================================
-// Results Info
-// ========================================
-
 .results-info {
   margin-bottom: 1rem;
 
@@ -99,10 +83,6 @@
     margin: 0;
   }
 }
-
-// ========================================
-// Strategy Card Specific
-// ========================================
 
 .strategy-card {
   @include card;
@@ -217,10 +197,6 @@
   font-size: 0.75rem;
 }
 
-// ========================================
-// Card Body (Expanded Steps)
-// ========================================
-
 .card-body {
   padding: 0 1.5rem 1.5rem;
 }
@@ -270,10 +246,6 @@
   }
 }
 
-// ========================================
-// Empty State
-// ========================================
-
 .empty-state {
   grid-column: 1 / -1;
   text-align: center;
@@ -292,10 +264,6 @@
   margin: 0 0 1.5rem 0;
 }
 
-// ========================================
-// Responsive Design
-// ========================================
-
 @include mobile-only {
   .search-section {
     flex-direction: column;
@@ -313,10 +281,6 @@
     }
   }
 }
-
-// ========================================
-// Reduced Motion
-// ========================================
 
 @media (prefers-reduced-motion: reduce) {
   .strategy-card,
