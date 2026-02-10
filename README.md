@@ -1,6 +1,6 @@
 # Steady Mind 🌿
 
-![Build & Test](https://github.com/kevinslawinski/steady-mind/actions/workflows/build-and-test.yml/badge.svg)
+![CI Pipeline](https://github.com/kevinslawinski/steady-mind/actions/workflows/pipeline.yml/badge.svg)
 ![Deploy](https://github.com/kevinslawinski/steady-mind/actions/workflows/deploy.yml/badge.svg)
 
 A simple mental health app designed to help users identify grounding techniques and coping mechanisms through guided prompts and interactive experiences.
