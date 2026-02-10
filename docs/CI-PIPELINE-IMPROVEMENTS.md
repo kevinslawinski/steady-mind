@@ -78,7 +78,7 @@ on:
 
 **Trade-off**: Uses more concurrent runners (usually not an issue for free tier)
 
-### 2. Playwright Browser Caching
+### 3. Playwright Browser Caching
 
 **Problem**: Browsers are large (~200MB for Chromium) and downloaded every run.
 
@@ -92,7 +92,7 @@ on:
 
 **Cache key**: `playwright-{os}-{version}` ensures correct binaries.
 
-### 3. node_modules Caching Between Jobs
+### 4. node_modules Caching Between Jobs
 
 **Problem**: Each parallel job runs `npm ci`, which installs ~300-500 packages and takes 50-60 seconds per job.
 
@@ -126,7 +126,7 @@ on:
 - This speeds up npm downloads but still requires full installation
 - Caching `node_modules` skips both download AND installation
 
-### 4. Concurrency Groups
+### 5. Concurrency Groups
 
 ```yaml
 concurrency:
@@ -140,7 +140,7 @@ concurrency:
 
 **With concurrency control**: First pipeline cancels, only second completes (~5 runner-minutes saved)
 
-### 5. SHA-Based Artifact Naming
+### 6. SHA-Based Artifact Naming
 
 **Current**: `build-artifacts`  
 **Improved**: `build-a1b2c3d...`
@@ -152,7 +152,7 @@ concurrency:
 - Clear traceability in logs
 - Enables deploying any previous build
 
-### 6. Smart Manual Deployment
+### 7. Smart Manual Deployment
 
 **Current workflow for manual deploy**:
 
@@ -180,7 +180,7 @@ gh run list --workflow="Build & Test" --branch=main --limit=10
 gh workflow run deploy.yml -f run_id=123456789
 ```
 
-### 6. Job Timeouts
+### 8. Job Timeouts
 
 Prevents scenarios where:
 
@@ -195,7 +195,7 @@ Prevents scenarios where:
 - Test: 10 minutes (typically 1-2 minutes)
 - Deploy: 10 minutes (typically 1-2 minutes)
 
-### 7. Comprehensive Status Checks
+### 9. Comprehensive Status Checks
 
 **New `all-checks` job**: Single status check that depends on all others.
 

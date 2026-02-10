@@ -79,7 +79,7 @@ jobs:
         with:
           name: build-${{ github.sha }}
           path: ./dist/steady-mind/browser
-          retention-days: 1
+          retention-days: 7
 
   # Test job - runs in parallel with build
   test:
@@ -110,8 +110,14 @@ jobs:
 
       # Cache Playwright browsers - significant time savings
       - name: Get Playwright version
-        id: playwright-version
-        run: echo "version=$(npm list @vitest/browser-playwright --depth=0 | grep @vitest/browser-playwright | sed 's/.*@//')" >> $GITHUB_OUTPUT
+        run: |
+          set -euo pipefail
+          VERSION=$(node -p "require('@vitest/browser-playwright/package.json').version" || echo "")
+          if [ -z "$VERSION" ]; then
+            echo "Error: Unable to determine @vitest/browser-playwright version." >&2
+            exit 1
+          fi
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
 
       - name: Cache Playwright browsers
         uses: actions/cache@v4
