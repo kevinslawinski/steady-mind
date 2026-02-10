@@ -15,7 +15,8 @@ A simple mental health app designed to help users identify grounding techniques 
 
 - **🏠 Home/Guided Support** - Mobile-first Q&A interface for immediate support (combined landing + guided prompts)
 - **💬 Interactive Questions** - Progressive question system with emoji-based options and progress tracking
-- **📚 Coping Library** - Curated collection of grounding techniques (foundation implemented)
+- **📚 Coping Library** - Full searchable library with 5 strategies, category/emotion filtering, favorites, expandable instructions
+- **🔍 Smart Filtering** - Search, category filters, emotion tags, and favorites system with localStorage persistence
 - **🆘 Crisis Resources** - Prominent access to crisis hotlines and professional resources
 - **🌓 Light/Dark Mode** - Accessible theme toggle with system preference detection
 - **♿ Accessibility First** - WCAG 2.1 AA compliant with keyboard navigation and screen reader support
@@ -28,114 +29,54 @@ A simple mental health app designed to help users identify grounding techniques 
 - **Mobile-First** - Direct access to support without landing page friction
 - **Privacy First** - Transparent about data handling, minimal data collection
 
-## 🚀 Getting Started
+## 🚀 Try It Out
 
-### Prerequisites
+**Live Demo**: [https://kevinslawinski.github.io/steady-mind](https://kevinslawinski.github.io/steady-mind)
 
-- Node.js (v18 or higher recommended)
-- npm (comes with Node.js)
+### For Developers
 
-### Installation
+For detailed setup, scripts, architecture, and development guidelines, see [docs/DEVELOPMENT.md](docs/DEVELOPMENT.md).
 
-```bash
-# Install dependencies
-npm install
+## 🏗️ Project Overview
 
-# Start development server
-npm start
-```
+Steady Mind is built with **Angular 21+** using modern patterns like signals, standalone components, and a utility-first CSS architecture. The app is organized into:
 
-The app will be available at `http://localhost:4200/`
+- **Core**: Layout components (header, navigation) and services (theme, coping strategies)
+- **Features**: Home, guided prompts, coping library, crisis resources
+- **Documentation**: All developer docs live in the `docs/` folder
 
-### Available Scripts
+For detailed architecture, see [docs/DEVELOPMENT.md](docs/DEVELOPMENT.md).
 
-```bash
-npm start        # Start development server
-npm run build    # Build for production
-npm test         # Run unit tests
-npm run watch    # Build in watch mode
-```
+## 🎨 Design Philosophy
 
-## 🏗️ Project Structure
+- **Calming Colors** - Soft blues and greens in light mode, gentle dark theme
+- **Accessible** - WCAG 2.1 AA compliant with keyboard navigation and screen reader support
+- **Responsive** - Mobile-first design that works beautifully on all devices
+- **Compassionate** - Supportive, non-clinical language throughout
 
-```
-src/
-├── app/
-│   ├── core/
-│   │   ├── layout/          # Header (transparent, sticky), Navigation components
-│   │   └── services/        # Theme service, etc.
-│   ├── features/
-│   │   ├── home/            # Main guided Q&A interface (mobile-first)
-│   │   ├── coping-library/  # Coping mechanisms library (foundation)
-│   │   └── crisis-resources/ # Crisis hotlines & resources (fully implemented)
-│   ├── app.ts               # Root component
-│   └── app.routes.ts        # Route configuration
-├── globals/
-│   └── app.constants.ts     # App-wide constants (APP_TITLE, etc.)
-└── styles.scss              # Global styles & theme variables
-```
-
-## 🎨 Design System
-
-### Color Palette
-
-**Light Mode:**
-
-- Primary: Calming Blue (#4a90e2)
-- Secondary: Soft Green (#66bb6a)
-- Accent: Warm Support (#ff7043)
-
-**Dark Mode:**
-
-- Automatically adjusts for gentle, non-jarring experience
-- Respects system preferences
-
-### Accessibility Features
-
-- ✅ Keyboard navigation support
-- ✅ Screen reader compatible
-- ✅ Focus indicators on all interactive elements
-- ✅ Sufficient color contrast ratios
-- ✅ Reduced motion support
-- ✅ Skip to main content link
-- ✅ Semantic HTML throughout
-
-## 🛠️ Technology Stack
-
-- **Angular** - Modern framework with signals and standalone components
-- **TypeScript** - Strongly-typed development
-- **SCSS** - Advanced styling with CSS custom properties
-- **RxJS** - Reactive programming
-- **Vitest** - Fast unit testing framework
-
-### Modern Angular Features
-
-- ✅ Signals for reactive state management
-- ✅ Standalone components (no NgModules)
-- ✅ New control flow syntax (@if, @for)
-- ✅ OnPush change detection strategy
-- ✅ Lazy-loaded routes
-- ✅ input() and output() functions
+For CSS architecture and styling guidelines, see [docs/CSS-ARCHITECTURE.md](docs/CSS-ARCHITECTURE.md).
 
 ## 📋 Roadmap
 
-### Phase 1 (Current) ✅
+### Phase 1 ✅ Complete
 
-- [x] Core application structure
-- [x] Navigation and layout (transparent header, side drawer)
-- [x] Theme system with light/dark mode
-- [x] Crisis resources page (fully implemented)
-- [x] Mobile-first home page with guided Q&A interface
-- [x] Interactive question system with progress tracking
-- [x] Accessibility features (WCAG 2.1 AA)
+- [x] Mobile-first interface with immediate support access
+- [x] Interactive guided questions with progress tracking
+- [x] Coping library with 5 strategies (breathing, grounding, etc.)
+- [x] Search and filter by category/emotion
+- [x] Favorites system with localStorage
+- [x] Crisis resources with prominent hotlines
+- [x] Light/dark theme with system detection
+- [x] Full accessibility (WCAG 2.1 AA)
 
-### Phase 2 (Next)
+### Phase 2 (Current Focus)
 
-- [ ] Complete recommendation logic for guided prompts
-- [ ] Build coping mechanisms database/library
-- [ ] Add search and filtering for coping techniques
-- [ ] Create breathing exercises component
-- [ ] Add grounding techniques (5-4-3-2-1, etc.)
+- [ ] Connect guided prompts to personalized recommendations
+- [ ] Add custom strategy creation UI
+- [ ] Expand strategy library beyond 5 defaults
+- [ ] Interactive timers for breathing exercises
+- [ ] Step-through mode for guided techniques
+- [ ] Strategy usage analytics (privacy-first, local only)
 
 ### Phase 3 (Future)
 
@@ -154,6 +95,13 @@ This personal project prioritizes:
 - Accessibility for all users
 - Evidence-based coping techniques
 - Compassionate, non-clinical language
+
+## 📚 Documentation
+
+- **[DEVELOPMENT.md](docs/DEVELOPMENT.md)** - Setup, architecture, conventions, state management
+- **[IMPLEMENTATION.md](docs/IMPLEMENTATION.md)** - Current features, services, data models
+- **[CSS-ARCHITECTURE.md](docs/CSS-ARCHITECTURE.md)** - Utility classes, SCSS mixins, best practices
+- **[DEPLOYMENT.md](docs/DEPLOYMENT.md)** - GitHub Actions workflows, deployment guide
 
 ## 🆘 Mental Health Resources
 

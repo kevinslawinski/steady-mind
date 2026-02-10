@@ -1,21 +1,194 @@
-<div class="coping-library">
-  <div class="container">
+<div class="coping-library page-container">
+  <div class="content-container">
+    <!-- Page Header -->
     <header class="page-header">
       <h1>Coping Library</h1>
       <p class="page-intro">
-        Explore our collection of grounding techniques and coping mechanisms. These are tools that
-        many people find helpful during difficult moments.
+        Explore grounding techniques and coping strategies. These are tools that many people find
+        helpful during difficult moments.
       </p>
     </header>
 
-    <section class="content">
-      <div class="placeholder">
-        <p>Coping mechanisms library coming soon...</p>
-        <p class="note">
-          This will include a searchable, categorized collection of evidence-based grounding
-          techniques, breathing exercises, and coping strategies.
-        </p>
+    <!-- Search and Filter Bar -->
+    <section class="search-section">
+      <div class="search-bar input-group">
+        <span class="input-icon">🔍</span>
+        <input
+          type="text"
+          placeholder="Search strategies..."
+          [value]="searchQuery()"
+          (input)="onSearchChange($event)"
+        />
+        @if (searchQuery()) {
+          <button
+            type="button"
+            class="input-clear"
+            (click)="clearAllFilters()"
+            aria-label="Clear search"
+          >
+            ✕
+          </button>
+        }
       </div>
+
+      <div class="filter-controls">
+        <button
+          type="button"
+          class="filter-toggle"
+          (click)="toggleFilters()"
+          [class.active]="showFilters()"
+        >
+          <span class="icon">⚙️</span>
+          Filters
+          @if (activeFiltersCount() > 0) {
+            <span class="badge badge-count">{{ activeFiltersCount() }}</span>
+          }
+        </button>
+
+        <button
+          type="button"
+          class="favorites-toggle"
+          (click)="toggleFavoritesOnly()"
+          [class.active]="showFavoritesOnly()"
+        >
+          <span class="icon">{{ showFavoritesOnly() ? '❤️' : '🤍' }}</span>
+          Favorites
+        </button>
+      </div>
+    </section>
+
+    <!-- Filter Panel -->
+    @if (showFilters()) {
+      <section class="filter-panel slide-down">
+        <div class="filter-group">
+          <h3>Categories</h3>
+          <div class="filter-chips">
+            @for (category of categoryOptions; track category.value) {
+              <button
+                type="button"
+                class="chip"
+                [class.chip-active]="selectedCategories().includes(category.value)"
+                (click)="toggleCategory(category.value)"
+              >
+                <span class="chip-icon">{{ category.icon }}</span>
+                {{ category.label }}
+              </button>
+            }
+          </div>
+        </div>
+
+        <div class="filter-group">
+          <h3>For These Feelings</h3>
+          <div class="filter-chips">
+            @for (emotion of emotionOptions; track emotion.value) {
+              <button
+                type="button"
+                class="chip"
+                [class.chip-active]="selectedEmotions().includes(emotion.value)"
+                (click)="toggleEmotion(emotion.value)"
+              >
+                {{ emotion.label }}
+              </button>
+            }
+          </div>
+        </div>
+
+        @if (activeFiltersCount() > 0) {
+          <button type="button" class="btn btn-ghost clear-filters" (click)="clearAllFilters()">
+            Clear All Filters
+          </button>
+        }
+      </section>
+    }
+
+    <!-- Results Count -->
+    <div class="results-info">
+      <p>
+        @if (strategies().length === 1) {
+          Showing 1 strategy
+        } @else {
+          Showing {{ strategies().length }} strategies
+        }
+      </p>
+    </div>
+    <!-- Strategy Cards Grid -->
+    <section class="strategies-grid grid-auto-fill">
+      @if (strategies().length === 0) {
+        <div class="empty-state">
+          <p class="empty-icon">🔍</p>
+          <p class="empty-message">No strategies match your current filters.</p>
+          <button type="button" class="btn btn-ghost clear-filters" (click)="clearAllFilters()">
+            Clear Filters
+          </button>
+        </div>
+      } @else {
+        @for (strategy of strategies(); track strategy.id) {
+          <article class="strategy-card" [class.expanded]="isExpanded(strategy.id)">
+            <!-- Card Header -->
+            <div
+              class="card-header"
+              role="button"
+              tabindex="0"
+              (click)="toggleExpanded(strategy.id)"
+              (keydown.enter)="toggleExpanded(strategy.id)"
+              (keydown.space)="toggleExpanded(strategy.id); $event.preventDefault()"
+            >
+              <div class="header-top">
+                <div class="category-badge badge">
+                  <span class="category-icon">{{ getCategoryIcon(strategy.category) }}</span>
+                  <span class="category-label">{{ strategy.category }}</span>
+                </div>
+                <button
+                  type="button"
+                  class="favorite-btn"
+                  (click)="toggleFavorite(strategy.id, $event)"
+                  [attr.aria-label]="
+                    isFavorite(strategy.id) ? 'Remove from favorites' : 'Add to favorites'
+                  "
+                >
+                  {{ isFavorite(strategy.id) ? '❤️' : '🤍' }}
+                </button>
+              </div>
+
+              <h2 class="strategy-name">{{ strategy.name }}</h2>
+              <p class="strategy-description">{{ strategy.description }}</p>
+
+              <!-- Quick Info -->
+              <div class="quick-info">
+                <span class="info-item" title="Estimated time">
+                  <span class="info-icon">⏱️</span>
+                  {{ strategy.estimatedMinutes }}min
+                </span>
+                <span class="info-item" title="Difficulty level">
+                  <span class="info-icon">{{ getDifficultyIcon(strategy.difficulty) }}</span>
+                  {{ getDifficultyLabel(strategy.difficulty) }}
+                </span>
+              </div>
+
+              <button
+                type="button"
+                class="expand-toggle"
+                [attr.aria-label]="isExpanded(strategy.id) ? 'Collapse' : 'Expand'"
+              >
+                {{ isExpanded(strategy.id) ? 'Hide Steps' : 'View Steps' }}
+                <span class="toggle-icon">{{ isExpanded(strategy.id) ? '▲' : '▼' }}</span>
+              </button>
+            </div>
+
+            <!-- Expandable Steps Section -->
+            @if (isExpanded(strategy.id)) {
+              <div class="card-body expand-down">
+                <h3 class="steps-title">Step-by-Step</h3>
+                <ol class="steps-list">
+                  @for (step of strategy.steps; track $index) {
+                    <li class="step-item">{{ step }}</li>
+                  }
+                </ol>
+              </div>
+            }
+          </article>
+        }
+      }
     </section>
   </div>
 </div>

@@ -1,3 +1,10 @@
+// ========================================
+// Home Component Specific Styles
+// Note: Common styles (text utilities, etc.) are in global styles.scss
+// ========================================
+
+@use '../../../styles/mixins' as *;
+
 .home {
   min-height: calc(100vh - 65px);
   display: flex;
@@ -5,30 +12,47 @@
   padding: 1rem;
   max-width: 600px;
   margin: 0 auto;
+
+  @include tablet {
+    padding: 2rem;
+    max-width: 700px;
+  }
+
+  @include desktop {
+    max-width: 800px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .crisis-link {
+      transition: none;
+    }
+  }
 }
 
-// Welcome section
 .welcome {
   padding: 1.5rem 0 1rem;
-  text-align: center;
+
+  @include tablet {
+    padding: 2rem 0 1.5rem;
+  }
 }
 
 .welcome-text {
   font-size: 1rem;
   line-height: 1.6;
-  color: var(--text-secondary);
   margin: 0;
+
+  @include tablet {
+    font-size: 1.125rem;
+  }
 }
 
-// Footer note
 .footer-note {
   padding: 1.5rem 0 1rem;
-  text-align: center;
 }
 
 .disclaimer-compact {
   font-size: 0.9rem;
-  color: var(--text-secondary);
   margin: 0;
 }
 
@@ -36,7 +60,7 @@
   color: var(--accent-color);
   font-weight: 600;
   text-decoration: underline;
-  transition: color 0.2s ease;
+  transition: color var(--transition-fast);
 
   &:hover,
   &:focus {
@@ -47,35 +71,5 @@
     outline: 2px solid var(--accent-color);
     outline-offset: 2px;
     border-radius: 2px;
-  }
-}
-
-// Tablet and larger
-@media (min-width: 768px) {
-  .home {
-    padding: 2rem;
-    max-width: 700px;
-  }
-
-  .welcome {
-    padding: 2rem 0 1.5rem;
-  }
-
-  .welcome-text {
-    font-size: 1.125rem;
-  }
-}
-
-// Desktop
-@media (min-width: 1024px) {
-  .home {
-    max-width: 800px;
-  }
-}
-
-// Reduced motion support
-@media (prefers-reduced-motion: reduce) {
-  .crisis-link {
-    transition: none;
   }
 }

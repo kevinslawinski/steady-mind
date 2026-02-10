@@ -271,7 +271,7 @@ Notify team of deployment status.
 - [x] Review improved workflow files
 - [x] Verify artifact names match between workflows
 - [x] Implement node_modules caching
-- [ ] Test manual deployment with run_id input
-- [ ] Update branch protection rules if using `all-checks` job
-- [ ] Monitor first few runs for issues
-- [ ] Delete old workflow files after verification
+- [X] Test manual deployment with run_id input
+- [X] Update branch protection rules if using `all-checks` job
+- [X] Monitor first few runs for issues
+- [X] Delete old workflow files after verification

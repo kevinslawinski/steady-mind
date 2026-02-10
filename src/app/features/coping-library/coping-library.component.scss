@@ -1,52 +1,294 @@
-.coping-library {
-  min-height: 100vh;
-  padding: 2rem 1.5rem;
+// Common styles (cards, buttons, chips) are in global styles.scss
+@use '../../../styles/mixins' as *;
+
+.search-section {
+  margin-bottom: 1.5rem;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  align-items: stretch;
 }
 
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
+.search-bar {
+  flex: 1;
+  min-width: 250px;
 }
 
-.page-header {
-  text-align: center;
-  margin-bottom: 3rem;
+.filter-controls {
+  display: flex;
+  gap: 0.75rem;
+}
 
-  h1 {
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: var(--text-primary);
-    margin: 0 0 1rem 0;
+.filter-toggle,
+.favorites-toggle {
+  @include btn-secondary;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 12px;
+  white-space: nowrap;
+
+  .icon {
+    font-size: 1.25rem;
+  }
+
+  &.active {
+    @include chip-active;
   }
 }
 
-.page-intro {
-  font-size: 1.125rem;
-  color: var(--text-secondary);
-  line-height: 1.6;
-  margin: 0;
+.filter-panel {
+  @include card;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
 }
 
-.content {
-  background-color: var(--surface-color);
-  border-radius: 16px;
-  padding: 2rem;
-  box-shadow: var(--shadow-md);
+.filter-group {
+  margin-bottom: 1.5rem;
+
+  &:last-of-type {
+    margin-bottom: 1rem;
+  }
+
+  h3 {
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-secondary);
+    margin: 0 0 0.75rem 0;
+  }
 }
 
-.placeholder {
-  text-align: center;
-  padding: 3rem 1rem;
+.filter-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.chip-icon {
+  font-size: 1.1rem;
+}
+
+.clear-filters {
+  width: 100%;
+}
+
+.results-info {
+  margin-bottom: 1rem;
 
   p {
-    font-size: 1.125rem;
-    color: var(--text-secondary);
-    margin: 0 0 1rem 0;
-  }
-
-  .note {
     font-size: 0.9rem;
     color: var(--text-tertiary);
-    font-style: italic;
+    margin: 0;
+  }
+}
+
+.strategy-card {
+  @include card;
+  overflow: hidden;
+
+  @include card-hover;
+}
+
+.card-header {
+  padding: 1.5rem;
+  cursor: pointer;
+}
+
+.header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.category-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.8rem;
+  background-color: var(--background-secondary);
+  border-radius: 12px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.category-icon {
+  font-size: 1rem;
+}
+
+.category-label {
+  text-transform: capitalize;
+}
+
+.favorite-btn {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.25rem;
+  transition: transform var(--transition-fast);
+  line-height: 1;
+
+  &:hover {
+    transform: scale(1.15);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+}
+
+.strategy-name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0 0 0.75rem 0;
+  line-height: 1.3;
+}
+
+.strategy-description {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin: 0 0 1rem 0;
+}
+
+.quick-info {
+  display: flex;
+  gap: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.info-item {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.info-icon {
+  font-size: 1rem;
+  opacity: 0.8;
+}
+
+.expand-toggle {
+  @include btn-base;
+  width: 100%;
+  gap: 0.5rem;
+  padding: 0.75rem;
+  border-radius: 8px;
+  justify-content: center;
+  background-color: var(--background-secondary);
+
+  &:hover {
+    background-color: var(--background-primary);
+  }
+}
+
+.toggle-icon {
+  font-size: 0.75rem;
+}
+
+.card-body {
+  padding: 0 1.5rem 1.5rem;
+}
+
+.steps-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0 0 1rem 0;
+}
+
+.steps-list {
+  margin: 0;
+  padding-left: 1.5rem;
+  list-style: none;
+  counter-reset: step-counter;
+}
+
+.step-item {
+  counter-increment: step-counter;
+  position: relative;
+  padding: 0.75rem 0;
+  padding-left: 2rem;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+
+  &::before {
+    content: counter(step-counter);
+    position: absolute;
+    left: 0;
+    top: 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.5rem;
+    height: 1.5rem;
+    background-color: var(--accent-color);
+    color: white;
+    border-radius: 50%;
+    font-size: 0.75rem;
+    font-weight: 700;
+  }
+
+  &:not(:last-child) {
+    border-bottom: 1px solid var(--background-secondary);
+  }
+}
+
+.empty-state {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 4rem 1rem;
+}
+
+.empty-icon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  opacity: 0.5;
+}
+
+.empty-message {
+  font-size: 1.125rem;
+  color: var(--text-secondary);
+  margin: 0 0 1.5rem 0;
+}
+
+@include mobile-only {
+  .search-section {
+    flex-direction: column;
+  }
+
+  .search-bar {
+    width: 100%;
+  }
+
+  .filter-controls {
+    width: 100%;
+
+    button {
+      flex: 1;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .strategy-card,
+  .filter-toggle,
+  .favorites-toggle {
+    transition: none;
+
+    &:hover {
+      transform: none;
+    }
   }
 }
