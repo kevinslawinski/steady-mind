@@ -105,13 +105,22 @@
         <div class="empty-state">
           <p class="empty-icon">🔍</p>
           <p class="empty-message">No strategies match your current filters.</p>
-          <button class="btn btn-ghost clear-filters" (click)="clearAllFilters()">Clear Filters</button>
+          <button class="btn btn-ghost clear-filters" (click)="clearAllFilters()">
+            Clear Filters
+          </button>
         </div>
       } @else {
         @for (strategy of strategies(); track strategy.id) {
           <article class="strategy-card card-hover" [class.expanded]="isExpanded(strategy.id)">
             <!-- Card Header -->
-            <div class="card-header" (click)="toggleExpanded(strategy.id)">
+            <div
+              class="card-header"
+              role="button"
+              tabindex="0"
+              (click)="toggleExpanded(strategy.id)"
+              (keydown.enter)="toggleExpanded(strategy.id)"
+              (keydown.space)="toggleExpanded(strategy.id); $event.preventDefault()"
+            >
               <div class="header-top">
                 <div class="category-badge badge">
                   <span class="category-icon">{{ getCategoryIcon(strategy.category) }}</span>

@@ -156,7 +156,7 @@ export class CopingStrategiesService {
   // Recommendations (for guided prompts)
   // ========================================
 
-  getRecommendedStrategies(emotionTags: EmotionTag[], limit: number = 5): CopingStrategy[] {
+  getRecommendedStrategies(emotionTags: EmotionTag[], limit = 5): CopingStrategy[] {
     const strategies = this.allStrategies();
 
     // Score strategies by how many matching emotion tags they have
