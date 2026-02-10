@@ -89,27 +89,26 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: build-${{ steps.get-sha.outputs.sha }}
-          path: ./artifacts
+          path: ./dist
           run-id: ${{ steps.run-id.outputs.run_id }}
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Verify build artifacts
         run: |
-          ART_DIR="./artifacts/build-${{ steps.get-sha.outputs.sha }}"
-          if [ ! -d "$ART_DIR" ] || [ -z "$(ls -A "$ART_DIR")" ]; then
+          if [ ! -d "./dist" ] || [ -z "$(ls -A ./dist)" ]; then
             echo "❌ Error: Build artifacts not found or empty"
-            echo "Searched for artifact: build-${{ steps.get-sha.outputs.sha }}"
+            echo "Artifact name: build-${{ steps.get-sha.outputs.sha }}"
             echo "From run ID: ${{ steps.run-id.outputs.run_id }}"
             exit 1
           fi
           echo "✅ Build artifacts verified successfully"
           echo "📦 Contents:"
-          ls -la "$ART_DIR"
+          ls -la ./dist
 
       - name: Upload to GitHub Pages
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./artifacts/build-${{ steps.get-sha.outputs.sha }}
+          path: ./dist
 
       - name: Deploy to GitHub Pages
         id: deployment
