@@ -9,7 +9,6 @@
     "test": "ng test",
     "test:no-watch": "ng test --watch=false",
     "build-gh": "ng build --base-href https://kevinslawinski.github.io/steady-mind/",
-    "deploy-gh": "npx angular-cli-ghpages --dir=dist/steady-mind/browser --no-silent",
     "lint": "ng lint"
   },
   "prettier": {

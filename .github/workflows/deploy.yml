@@ -88,13 +88,14 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: build-${{ steps.get-sha.outputs.sha }}
-          path: ./dist
+          path: ./artifacts
           run-id: ${{ steps.run-id.outputs.run_id }}
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Verify build artifacts
         run: |
-          if [ ! -d "./dist/steady-mind/browser" ] || [ -z "$(ls -A ./dist/steady-mind/browser)" ]; then
+          ART_DIR="./artifacts/build-${{ steps.get-sha.outputs.sha }}"
+          if [ ! -d "$ART_DIR" ] || [ -z "$(ls -A "$ART_DIR")" ]; then
             echo "❌ Error: Build artifacts not found or empty"
             echo "Searched for artifact: build-${{ steps.get-sha.outputs.sha }}"
             echo "From run ID: ${{ steps.run-id.outputs.run_id }}"
@@ -102,12 +103,12 @@ jobs:
           fi
           echo "✅ Build artifacts verified successfully"
           echo "📦 Contents:"
-          ls -la ./dist/steady-mind/browser
+          ls -la "$ART_DIR"
 
       - name: Upload to GitHub Pages
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./dist/steady-mind/browser
+          path: ./artifacts/build-${{ steps.get-sha.outputs.sha }}
 
       - name: Deploy to GitHub Pages
         id: deployment
