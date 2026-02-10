@@ -1,9 +1,8 @@
-# IMPROVED VERSION - Replace deploy.yml with this
 name: Deploy to GitHub Pages
 
 on:
   workflow_run:
-    workflows: ['Build & Test']
+    workflows: ['CI Pipeline']
     types: [completed]
     branches: [main]
 
@@ -26,7 +25,7 @@ concurrency:
 
 jobs:
   deploy:
-    name: Deploy to GitHub Pages
+    name: Deploy
     runs-on: ubuntu-latest
     timeout-minutes: 10
 

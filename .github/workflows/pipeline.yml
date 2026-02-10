@@ -1,5 +1,4 @@
-# IMPROVED VERSION - Replace build-and-test.yml with this
-name: Build & Test
+name: CI Pipeline
 
 on:
   push:
