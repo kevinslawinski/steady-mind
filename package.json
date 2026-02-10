@@ -38,6 +38,7 @@
     "@angular/build": "^21.0.2",
     "@angular/cli": "^21.0.2",
     "@angular/compiler-cli": "^21.0.3",
+    "@vitest/browser-playwright": "^4.0.18",
     "@types/jasmine": "~5.1.0",
     "jasmine-core": "~5.9.0",
     "jsdom": "^27.2.0",
