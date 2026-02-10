@@ -19,10 +19,10 @@ export class CopingStrategiesService {
 
   // Signals for reactive state
   private readonly userPreferences = signal<UserPreferences>(this.loadPreferences());
-  private readonly searchQuery = signal('');
-  private readonly selectedCategories = signal<StrategyCategory[]>([]);
-  private readonly selectedEmotions = signal<EmotionTag[]>([]);
-  private readonly showFavoritesOnly = signal(false);
+  readonly searchQuery = signal('');
+  readonly selectedCategories = signal<StrategyCategory[]>([]);
+  readonly selectedEmotions = signal<EmotionTag[]>([]);
+  readonly showFavoritesOnly = signal(false);
 
   // Computed signal for all strategies (default + custom)
   readonly allStrategies = computed<CopingStrategy[]>(() => [
@@ -108,7 +108,7 @@ export class CopingStrategiesService {
   addCustomStrategy(strategy: Omit<CopingStrategy, 'id' | 'isDefault'>): void {
     const newStrategy: CopingStrategy = {
       ...strategy,
-      id: `custom-${Date.now()}`,
+      id: `custom-${crypto.randomUUID()}`,
       isDefault: false,
     };
 
@@ -185,7 +185,28 @@ export class CopingStrategiesService {
     try {
       const stored = localStorage.getItem(this.STORAGE_KEY);
       if (stored) {
-        return JSON.parse(stored);
+        const parsed = JSON.parse(stored);
+
+        if (parsed && typeof parsed === 'object') {
+          const favoritesRaw = (parsed as any).favorites;
+          const customStrategiesRaw = (parsed as any).customStrategies;
+
+          const favorites: string[] = Array.isArray(favoritesRaw)
+            ? favoritesRaw.filter((id: unknown) => typeof id === 'string')
+            : [];
+
+          const customStrategies: CopingStrategy[] = Array.isArray(customStrategiesRaw)
+            ? customStrategiesRaw.filter(
+                (strategy: any) =>
+                  strategy &&
+                  typeof strategy === 'object' &&
+                  typeof strategy.id === 'string' &&
+                  typeof strategy.title === 'string',
+              )
+            : [];
+
+          return { favorites, customStrategies };
+        }
       }
     } catch (error) {
       console.error('Failed to load preferences:', error);

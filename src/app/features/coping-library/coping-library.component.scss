@@ -87,7 +87,6 @@
 .strategy-card {
   @include card;
   overflow: hidden;
-  transition: all 0.3s ease;
 
   @include card-hover;
 }

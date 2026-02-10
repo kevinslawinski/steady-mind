@@ -21,15 +21,15 @@ export class CopingLibraryComponent {
   protected readonly favorites = this.copingService.favorites;
 
   // Local UI state
-  protected readonly searchQuery = signal('');
+  protected readonly searchQuery = this.copingService.searchQuery;
   protected readonly showFilters = signal(false);
   protected readonly expandedStrategies = signal<Set<string>>(new Set());
   protected readonly selectedStrategy = signal<CopingStrategy | null>(null);
 
-  // Filter states
-  protected readonly selectedCategories = signal<StrategyCategory[]>([]);
-  protected readonly selectedEmotions = signal<EmotionTag[]>([]);
-  protected readonly showFavoritesOnly = signal(false);
+  // Filter states managed by service
+  protected readonly selectedCategories = this.copingService.selectedCategories;
+  protected readonly selectedEmotions = this.copingService.selectedEmotions;
+  protected readonly showFavoritesOnly = this.copingService.showFavoritesOnly;
 
   // Available filter options
   protected readonly categoryOptions: { value: StrategyCategory; label: string; icon: string }[] = [
