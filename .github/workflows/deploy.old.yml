@@ -1,8 +1,8 @@
-name: Deploy to GitHub Pages
+name: Deploy to GitHub Pages (Old)
 
 on:
   workflow_run:
-    workflows: ['Build & Test']
+    workflows: ['Build & Test (Old)']
     types:
       - completed
     branches:
