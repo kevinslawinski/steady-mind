@@ -184,30 +184,39 @@ export class CopingStrategiesService {
   private loadPreferences(): UserPreferences {
     try {
       const stored = localStorage.getItem(this.STORAGE_KEY);
-      if (stored) {
-        const parsed = JSON.parse(stored);
-
-        if (parsed && typeof parsed === 'object') {
-          const favoritesRaw = (parsed as any).favorites;
-          const customStrategiesRaw = (parsed as any).customStrategies;
-
-          const favorites: string[] = Array.isArray(favoritesRaw)
-            ? favoritesRaw.filter((id: unknown) => typeof id === 'string')
-            : [];
-
-          const customStrategies: CopingStrategy[] = Array.isArray(customStrategiesRaw)
-            ? customStrategiesRaw.filter(
-                (strategy: any) =>
-                  strategy &&
-                  typeof strategy === 'object' &&
-                  typeof strategy.id === 'string' &&
-                  typeof strategy.title === 'string',
-              )
-            : [];
-
-          return { favorites, customStrategies };
-        }
+      if (!stored) {
+        return { favorites: [], customStrategies: [] };
       }
+
+      const parsed: unknown = JSON.parse(stored);
+
+      // Type guard to ensure parsed is an object
+      if (!parsed || typeof parsed !== 'object') {
+        return { favorites: [], customStrategies: [] };
+      }
+
+      const parsedObj = parsed as Record<string, unknown>;
+
+      // Safely extract and validate favorites using type predicate
+      const favorites: string[] = Array.isArray(parsedObj['favorites'])
+        ? parsedObj['favorites'].filter((id): id is string => typeof id === 'string')
+        : [];
+
+      // Safely extract and validate custom strategies using type predicate
+      const customStrategies: CopingStrategy[] = Array.isArray(parsedObj['customStrategies'])
+        ? parsedObj['customStrategies'].filter((strategy): strategy is CopingStrategy => {
+            return (
+              strategy !== null &&
+              typeof strategy === 'object' &&
+              'id' in strategy &&
+              typeof strategy.id === 'string' &&
+              'name' in strategy &&
+              typeof strategy.name === 'string'
+            );
+          })
+        : [];
+
+      return { favorites, customStrategies };
     } catch (error) {
       console.error('Failed to load preferences:', error);
     }
