@@ -50,17 +50,17 @@ jobs:
                 core.setOutput('run_id', runId);
                 console.log(`Using specified run ID: ${runId}`);
               } else {
-                // Find latest successful "Build & Test" run on main
+                // Find latest successful "CI Pipeline" run on main
                 const runs = await github.rest.actions.listWorkflowRuns({
                   owner: context.repo.owner,
                   repo: context.repo.repo,
-                  workflow_id: 'build.yml',
+                  workflow_id: 'pipeline.yml',
                   branch: 'main',
                   status: 'success',
                   per_page: 1
                 });
                 if (runs.data.workflow_runs.length === 0) {
-                  throw new Error('No successful "Build & Test" runs found on main branch');
+                  throw new Error('No successful "CI Pipeline" runs found on main branch');
                 }
                 const latestRunId = runs.data.workflow_runs[0].id;
                 core.setOutput('run_id', latestRunId);
@@ -94,7 +94,7 @@ jobs:
 
       - name: Verify build artifacts
         run: |
-          if [ ! -d "./dist" ] || [ -z "$(ls -A ./dist)" ]; then
+          if [ ! -d "./dist/steady-mind/browser" ] || [ -z "$(ls -A ./dist/steady-mind/browser)" ]; then
             echo "❌ Error: Build artifacts not found or empty"
             echo "Searched for artifact: build-${{ steps.get-sha.outputs.sha }}"
             echo "From run ID: ${{ steps.run-id.outputs.run_id }}"
@@ -102,7 +102,7 @@ jobs:
           fi
           echo "✅ Build artifacts verified successfully"
           echo "📦 Contents:"
-          ls -la ./dist
+          ls -la ./dist/steady-mind/browser
 
       - name: Upload to GitHub Pages
         uses: actions/upload-pages-artifact@v3
