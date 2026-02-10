@@ -3,9 +3,10 @@ name: Build & Test
 
 on:
   push:
-    branches: ['main', 'feature/**']
+    branches: ['main'] # Only run on direct pushes to main
   pull_request:
-    branches: ['main']
+    branches: ['main'] # Run on all PRs targeting main
+    types: [opened, synchronize, reopened] # Explicit PR trigger types
 
 # Cancel in-progress runs for same branch
 concurrency:

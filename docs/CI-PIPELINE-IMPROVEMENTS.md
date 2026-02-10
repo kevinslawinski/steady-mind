@@ -27,7 +27,46 @@
 
 ## Detailed Improvements
 
-### 1. Job Parallelization Strategy
+### 1. Avoid Duplicate Workflow Runs
+
+**Problem**: Pushing to a PR branch triggers workflow twice - once for `push` event, once for `pull_request` event.
+
+**Old configuration:**
+
+```yaml
+on:
+  push:
+    branches: ['main', 'feature/**'] # Fires on feature push
+  pull_request:
+    branches: ['main'] # Also fires on PR
+```
+
+**Impact**: When you push to a feature branch with an open PR, you get:
+
+- Run #1: `push` event (feature/\*\* matches)
+- Run #2: `pull_request` event (PR targeting main)
+- **Result**: Double the CI costs, double the wait time, cluttered checks
+
+**Solution**: Only use `push` for main branch, `pull_request` for all PRs:
+
+```yaml
+on:
+  push:
+    branches: ['main'] # Only merged code
+  pull_request:
+    branches: ['main'] # All PRs
+    types: [opened, synchronize, reopened]
+```
+
+**Benefits:**
+
+- ✅ PRs run once per push
+- ✅ Main branch runs on merge
+- ✅ 50% fewer workflow runs
+- ✅ Cleaner GitHub checks UI
+- ⚠️ Feature branches without PRs don't run CI (typically desired behavior)
+
+### 2. Job Parallelization Strategy
 
 **Rationale**: Build and test are independent operations. Running them in parallel provides faster feedback.
 
