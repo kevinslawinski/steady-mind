@@ -159,6 +159,12 @@
   }
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .progress-fill {
+    transition: none;
+  }
+}
+
 @include desktop {
   .question-card {
     gap: 2.5rem;

@@ -1,5 +1,5 @@
 <div class="coping-library page-container">
-  <div class="container content-container">
+  <div class="content-container">
     <!-- Page Header -->
     <header class="page-header">
       <h1>Coping Library</h1>
@@ -55,7 +55,7 @@
             @for (category of categoryOptions; track category.value) {
               <button
                 class="chip"
-                [class.active]="selectedCategories().includes(category.value)"
+                [class.chip-active]="selectedCategories().includes(category.value)"
                 (click)="toggleCategory(category.value)"
               >
                 <span class="chip-icon">{{ category.icon }}</span>
@@ -71,7 +71,7 @@
             @for (emotion of emotionOptions; track emotion.value) {
               <button
                 class="chip"
-                [class.active]="selectedEmotions().includes(emotion.value)"
+                [class.chip-active]="selectedEmotions().includes(emotion.value)"
                 (click)="toggleEmotion(emotion.value)"
               >
                 {{ emotion.label }}
@@ -81,7 +81,7 @@
         </div>
 
         @if (activeFiltersCount() > 0) {
-          <button class="btn-ghost clear-filters" (click)="clearAllFilters()">
+          <button class="btn btn-ghost clear-filters" (click)="clearAllFilters()">
             Clear All Filters
           </button>
         }
@@ -105,7 +105,7 @@
         <div class="empty-state">
           <p class="empty-icon">🔍</p>
           <p class="empty-message">No strategies match your current filters.</p>
-          <button class="btn-ghost clear-filters" (click)="clearAllFilters()">Clear Filters</button>
+          <button class="btn btn-ghost clear-filters" (click)="clearAllFilters()">Clear Filters</button>
         </div>
       } @else {
         @for (strategy of strategies(); track strategy.id) {

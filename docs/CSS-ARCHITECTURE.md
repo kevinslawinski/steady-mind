@@ -173,14 +173,25 @@ All components use CSS variables for consistent theming:
 
 ```scss
 // Transitions (used throughout)
---transition-fast:
-  150ms ease --transition-normal: 250ms ease --transition-slow: 350ms ease // Colors
-  --primary-color,
-  --secondary-color, --accent-color --text-primary, --text-secondary,
-  --text-tertiary --surface-color, --background-color,
-  --hover-color // Shadows
-  --shadow-sm,
-  --shadow-md, --shadow-lg;
+--transition-fast: 150ms ease
+--transition-normal: 250ms ease
+--transition-slow: 350ms ease
+
+// Colors
+--primary-color,
+--secondary-color,
+--accent-color
+--text-primary,
+--text-secondary,
+--text-tertiary
+--surface-color,
+--background-color,
+--hover-color
+
+// Shadows
+--shadow-sm,
+--shadow-md,
+--shadow-lg;
 ```
 
 ## Benefits of This Architecture

@@ -152,7 +152,7 @@ export class CopingLibraryComponent {
     const labels = {
       easy: 'Easy',
       medium: 'Medium',
-      challenging: 'Challenge',
+      challenging: 'Challenging',
     };
     return labels[difficulty];
   }

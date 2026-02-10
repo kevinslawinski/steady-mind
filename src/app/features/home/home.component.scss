@@ -18,8 +18,14 @@
     max-width: 700px;
   }
 
-  @media (min-width: 1024px) {
+  @include desktop {
     max-width: 800px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .crisis-link {
+      transition: none;
+    }
   }
 }
 

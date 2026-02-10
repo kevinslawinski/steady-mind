@@ -22,7 +22,7 @@
 
 - **CopingStrategy Interface**: Structured strategy data with emotion tags for matching, difficulty levels, time estimates
 - **Guided Prompt Questions**: Q&A data structure with emotion tag mapping for recommendations
-- **5 Default Strategies**: Box breathing, 5-4-3-2-1 grounding, progressive muscle relaxation, thought challenging, body scan
+- **5 Default Strategies**: Box breathing, 5-4-3-2-1 grounding, Leaves on a Stream, Mindful Observation, body scan
 
 ### CSS Architecture
 
