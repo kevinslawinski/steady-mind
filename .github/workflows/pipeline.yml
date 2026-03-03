@@ -1,162 +1,54 @@
+# =============================================================================
+# Caller: CI Pipeline — Angular Application
+# =============================================================================
+#
+# Drop this file into your repo at:  .github/workflows/pipeline.yml
+#
+# Customize the `with:` inputs to match your project.
+# All defaults are shown explicitly so every option is visible at a glance.
+# =============================================================================
+
 name: CI Pipeline
 
 on:
   push:
-    branches: ['main'] # Only run on direct pushes to main
+    branches: ['main']
   pull_request:
-    branches: ['main'] # Run on all PRs targeting main
-    types: [opened, synchronize, reopened] # Explicit PR trigger types
+    branches: ['main']
+    types: [opened, synchronize, reopened]
 
-# Cancel in-progress runs for same branch
+# Cancel in-progress runs for the same branch to save minutes
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
-  # Separate lint job - fast feedback
-  lint:
-    name: Lint
-    runs-on: ubuntu-latest
-    timeout-minutes: 5
+  ci:
+    uses: kevinslawinski/workflows/.github/workflows/ci.yml@v1
+    with:
+      # ── Node.js ──────────────────────────────────────────────────────────────
+      node-version: '24.x'
 
-    steps:
-      - uses: actions/checkout@v4
+      # ── Build ─────────────────────────────────────────────────────────────────
+      # For GitHub Pages, Angular must be built with the correct --base-href so
+      # that routing and assets resolve under the repo subdirectory, e.g.:
+      #   ng build --base-href /your-repo-name/
+      # Add a script to your package.json ("build-gh": "ng build --base-href /your-repo-name/")
+      # and reference it here, or pass the flag inline:
+      #   build-command: 'npx ng build --base-href /your-repo-name/'
+      # For Cloudflare Pages or any host serving from /, 'npm run build' is sufficient.
+      build-command: 'npm run build-gh'
+      build-output-path: './dist/steady-mind/browser' # ← change this
+      artifact-retention-days: 7
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '24.x'
+      # ── Lint ──────────────────────────────────────────────────────────────────
+      enable-lint: true
+      lint-command: 'npm run lint'
 
-      - name: Cache node_modules
-        uses: actions/cache@v4
-        id: node-modules-cache
-        with:
-          path: node_modules
-          key: node-modules-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
-          restore-keys: |
-            node-modules-${{ runner.os }}-
+      # ── Tests ─────────────────────────────────────────────────────────────────
+      enable-tests: true
+      test-command: 'npm run test:no-watch'
 
-      - name: Install dependencies
-        if: steps.node-modules-cache.outputs.cache-hit != 'true'
-        run: npm ci
-
-      - name: Run linter
-        run: npm run lint
-
-  # Build job - runs in parallel with lint
-  build:
-    name: Build
-    runs-on: ubuntu-latest
-    timeout-minutes: 10
-
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '24.x'
-
-      - name: Cache node_modules
-        uses: actions/cache@v4
-        id: node-modules-cache
-        with:
-          path: node_modules
-          key: node-modules-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
-          restore-keys: |
-            node-modules-${{ runner.os }}-
-
-      - name: Install dependencies
-        if: steps.node-modules-cache.outputs.cache-hit != 'true'
-        run: npm ci
-
-      - name: Build application
-        run: npm run build-gh
-
-      - name: Upload build artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: build-${{ github.sha }}
-          path: ./dist/steady-mind/browser
-          retention-days: 7
-
-  # Test job - runs in parallel with build
-  test:
-    name: Test
-    runs-on: ubuntu-latest
-    timeout-minutes: 10
-
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '24.x'
-
-      - name: Cache node_modules
-        uses: actions/cache@v4
-        id: node-modules-cache
-        with:
-          path: node_modules
-          key: node-modules-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
-          restore-keys: |
-            node-modules-${{ runner.os }}-
-
-      - name: Install dependencies
-        if: steps.node-modules-cache.outputs.cache-hit != 'true'
-        run: npm ci
-
-      # Cache Playwright browsers - significant time savings
-      - name: Get Playwright version
-        id: playwright-version
-        run: |
-          set -euo pipefail
-          VERSION=$(node -p "require('@vitest/browser-playwright/package.json').version" || echo "")
-          if [ -z "$VERSION" ]; then
-            echo "Error: Unable to determine @vitest/browser-playwright version." >&2
-            exit 1
-          fi
-          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
-
-      - name: Cache Playwright browsers
-        uses: actions/cache@v4
-        id: playwright-cache
-        with:
-          path: ~/.cache/ms-playwright
-          key: playwright-${{ runner.os }}-${{ steps.playwright-version.outputs.version }}
-
-      - name: Install Playwright browsers
-        if: steps.playwright-cache.outputs.cache-hit != 'true'
-        run: npx playwright install --with-deps chromium-headless-shell
-
-      - name: Run tests
-        run: npm run test:no-watch
-
-      # Optional: Upload test results
-      # - name: Upload test results
-      #   if: always()
-      #   uses: actions/upload-artifact@v4
-      #   with:
-      #     name: test-results-${{ github.sha }}
-      #     path: test-results/
-      #     retention-days: 7
-
-  # Summary job - ensures all checks pass
-  all-checks:
-    name: All Checks Passed
-    runs-on: ubuntu-latest
-    needs: [lint, build, test]
-    if: always()
-    timeout-minutes: 1
-
-    steps:
-      - name: Check all jobs
-        run: |
-          if [[ "${{ needs.lint.result }}" != "success" ]] || \
-             [[ "${{ needs.build.result }}" != "success" ]] || \
-             [[ "${{ needs.test.result }}" != "success" ]]; then
-            echo "One or more jobs failed"
-            exit 1
-          fi
-          echo "All checks passed successfully!"
+      # Playwright browser caching for Vitest browser mode.
+      # Remove or leave empty if you use a different test runner (e.g. Jest, Karma).
+      playwright-package: '@vitest/browser-playwright'
