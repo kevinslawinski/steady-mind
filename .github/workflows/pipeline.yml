@@ -24,7 +24,7 @@ concurrency:
 
 jobs:
   ci:
-    uses: kevinslawinski/workflows/.github/workflows/ci.yml@v1
+    uses: kevinslawinski/workflows/.github/workflows/ci.yml@main
     with:
       # ── Node.js ──────────────────────────────────────────────────────────────
       node-version: '24.x'
