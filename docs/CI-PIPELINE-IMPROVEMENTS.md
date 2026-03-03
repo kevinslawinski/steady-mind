@@ -271,7 +271,22 @@ Notify team of deployment status.
 - [x] Review improved workflow files
 - [x] Verify artifact names match between workflows
 - [x] Implement node_modules caching
-- [X] Test manual deployment with run_id input
-- [X] Update branch protection rules if using `all-checks` job
-- [X] Monitor first few runs for issues
-- [X] Delete old workflow files after verification
+- [x] Test manual deployment with run_id input
+- [x] Update branch protection rules if using `all-checks` job
+- [x] Monitor first few runs for issues
+- [x] Delete old workflow files after verification
+
+---
+
+## Next step: Reusable workflow library
+
+The workflows documented here have been extracted into a parameterized,
+cross-repository library so they can be reused across all projects without
+copy-pasting.
+
+See **[REUSABLE-WORKFLOWS.md](./REUSABLE-WORKFLOWS.md)** for:
+
+- How the library is structured
+- How to publish the `kevinslawinski/workflows` repo
+- How to migrate steady-mind to use the library
+- Deployment options (GitHub Pages, Cloudflare Pages, private repos)
